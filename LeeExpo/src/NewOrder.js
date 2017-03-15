@@ -1,45 +1,27 @@
 import React from 'react';
 import Input from './Input';
 
-const ulStyle = {
-    minHeight: 480,
-    maxHeight:480,
-    overflowY:'scroll'
-
-}
-
-const style={
-    height:660,
-    backgroundColor:'white',
-    display:'inline-block',
-    overflow:'auto',
-    margin:30,
-    marginLeft:60
-}
-
 class NewOrder extends React.Component{
     render(){
-    const title='New Order';
+        console.log('Table Number is  '+this.props.TableNumber);
+    const title='Table Number';
         return(
-                <div className='col-md-3'  style={style}>
-                    <h1 >{title}</h1>
+                <div className='col-md-3 NewOrder'>
+                    <div className='Title' id='myCheck'>
+                        <h2 >{title}</h2>
+                        <Input
+                            value={this.props.TableNumber}
+                            onChange={this.props.onTableNumberChange}
+                        />
+                        {this.props.AllergyRender}
+                     </div>
                     <ul className='orderlist' id='OrderListID'
-                    style={ulStyle}
                     >
                         {this.props.Order}
                     </ul>
-                    <div 
-                    className='tablenumber'
-                    /*style={InputStyle}*/
-                    >
-                        Table Number: <Input 
-                        value={this.props.value}
-                        onChange={this.props.onChange}
-                        />
-                    </div> 
+
                     <button 
-                        /*style={ButtonStyle} */
-                        onClick={this.props.HandleClick} 
+                        onClick={this.props.HandleSendClick} 
                         type="button" 
                         className="btn SendButton" 
                         id="sendbutton"

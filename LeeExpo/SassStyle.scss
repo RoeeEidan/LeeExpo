@@ -1,0 +1,186 @@
+$backgroundColor:white;
+$WidthAndTypeDishBorder:2px solid;
+$MarginBtweenDishs:2px 0 2px; 
+$LighterBlue:#5E6494;
+$Blue:#2d3047;
+$Purple:#c0b9dd;
+$Pink:#D81159;
+$LighterPink:#FF6382;
+$Gray:#c4c4c4;
+$OrderListBorder: 2px solid $Gray;
+$NumberColor:#42B3BA;
+
+*{
+  background-color: $backgroundColor;
+  input{
+    text-align: center;
+  }
+    body { 
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      .NavBarDiv{
+          background-color: $backgroundColor;
+          height: 150px;
+          padding: 0;
+          height: 100%;
+          width:100%;
+          border-radius: 0;
+            .NavBarLeftButton{
+              width: 49.7%;
+              height: 37px;
+              color: black;
+              text-align: center;
+              background-color:$backgroundColor;
+              padding-top: 9px;
+              display: inline-block;
+              border-right: 2px solid #c4c4c4;
+                .NavBarOrderButton{
+                  width: 49%;
+                  margin: auto;
+                }
+            }
+            .NavBarRightButton{
+              width: 49.7%;
+              height: 37px;
+              color: black;
+              text-align: center;
+              background-color:$backgroundColor;
+              padding-top: 9px;
+              display: inline-block;
+              .NavBarBoardButton{
+                width: 49%;
+                margin: auto;
+              }
+            }
+        }
+        .OrderPage{
+          text-align: center;
+          height: 1300px;
+          background-color: $backgroundColor;
+          height: 100%;
+          input{
+            background-color:  $backgroundColor;
+          }
+          .NewOrder{
+            text-align: center;
+            box-shadow: 0px 0px 25px #888888;
+            height:660;
+            background-color:  $backgroundColor;
+            display:'inline-block';
+            overflow:'auto';
+            margin:30px;
+            margin-left: 60px;
+            max-width: 420px;
+            .Title{
+              margin-bottom: 15px;
+            }
+            .Allergy{
+              font-size: 25px;
+              color: $LighterPink;
+              .keyboard{
+                color: black;
+              }
+              input{
+                color: black;
+                font-size: 15px;
+              }
+            }
+            .orderlist{
+              border-top: $OrderListBorder;
+              padding:20px 0 30px;
+              height: 480px;
+              overflow: scroll;
+                .Special2{
+                  color:$LighterBlue;
+                }
+                .Same-Time2{
+                  color:$Purple;
+                }
+                .Number{
+                  color: $NumberColor;
+                }
+            }
+            .SendButton{
+              margin:5px;
+            }
+          }
+          .ButtonsDiv{
+            padding: 100px 30px 0 0;
+            height: 720px;
+            width:65%;
+            display: inline-block;
+            overflow: hidden;
+              .SpecialButtonsDiv{
+                height:9%;
+                .Allergy{
+                  background-color: $LighterPink;
+                  opacity: 50%;
+                }
+                .Special{
+                  background-color: $LighterBlue;
+                }
+                .Same-Time{
+                  background-color: $Purple;
+                }
+                .SingleSpecialButton{
+                  width:31.4%;
+                  margin: 5px;
+                  height:70%;
+                  
+                }
+              }
+              .TimeButtonsDiv{
+                margin:2.5% 0;
+                .SingleTimeButton{
+                  background-color: $Gray;
+                  width: 18%;
+                  margin:3px 5% ;
+                  height:60px;
+                  width:60px;
+                  border-radius: 50%;
+                }
+              }
+              .FoodButtonsDiv{
+                height:86%;
+                .LightGray{
+                  background-color: #D9D9D9;
+                }
+                .Gray{
+                  background-color: #A1A1A1;
+                }
+                .SingleFoodButton{
+                  height: 10%;
+                  width:18%;
+                  margin:8px;
+                }
+              }
+          }
+        }
+        .ChefsBoard{
+          padding-left: 30px;
+          .SingleOrder{
+            border-left: 2px solid $Gray;
+            text-align: center;
+            display: inline-block;
+            padding: 5px;
+              .BoardNumber{
+                color:$Gray;
+              }
+              .SingleDish{
+                margin:$MarginBtweenDishs;
+              }
+              .TableNumberDiv{
+                font-size: 40px;
+                margin:0;
+              }
+              .AllergyDiv{
+                color: white;
+                background-color: $Gray;
+                margin:$MarginBtweenDishs;
+              }
+          }
+        }
+
+    }
+}

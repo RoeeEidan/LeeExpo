@@ -1,0 +1,136 @@
+* {
+  background-color: white; }
+  * input {
+    text-align: center; }
+  * body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif; }
+    * body .NavBarDiv {
+      background-color: white;
+      height: 150px;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      border-radius: 0; }
+      * body .NavBarDiv .NavBarLeftButton {
+        width: 49.7%;
+        height: 37px;
+        color: black;
+        text-align: center;
+        background-color: white;
+        padding-top: 9px;
+        display: inline-block;
+        border-right: 2px solid #c4c4c4; }
+        * body .NavBarDiv .NavBarLeftButton .NavBarOrderButton {
+          width: 49%;
+          margin: auto; }
+      * body .NavBarDiv .NavBarRightButton {
+        width: 49.7%;
+        height: 37px;
+        color: black;
+        text-align: center;
+        background-color: white;
+        padding-top: 9px;
+        display: inline-block; }
+        * body .NavBarDiv .NavBarRightButton .NavBarBoardButton {
+          width: 49%;
+          margin: auto; }
+    * body .OrderPage {
+      text-align: center;
+      height: 1300px;
+      background-color: white;
+      height: 100%; }
+      * body .OrderPage input {
+        background-color: white; }
+      * body .OrderPage .NewOrder {
+        text-align: center;
+        box-shadow: 0px 0px 25px #888888;
+        height: 660;
+        background-color: white;
+        display: 'inline-block';
+        overflow: 'auto';
+        margin: 30px;
+        margin-left: 60px;
+        max-width: 420px; }
+        * body .OrderPage .NewOrder .Title {
+          margin-bottom: 15px; }
+        * body .OrderPage .NewOrder .Allergy {
+          font-size: 25px;
+          color: #FF6382; }
+          * body .OrderPage .NewOrder .Allergy .keyboard {
+            color: black; }
+          * body .OrderPage .NewOrder .Allergy input {
+            color: black;
+            font-size: 15px; }
+        * body .OrderPage .NewOrder .orderlist {
+          border-top: 2px solid #c4c4c4;
+          padding: 20px 0 30px;
+          height: 480px;
+          overflow: scroll; }
+          * body .OrderPage .NewOrder .orderlist .Special2 {
+            color: #5E6494; }
+          * body .OrderPage .NewOrder .orderlist .Same-Time2 {
+            color: #c0b9dd; }
+          * body .OrderPage .NewOrder .orderlist .Number {
+            color: #42B3BA; }
+        * body .OrderPage .NewOrder .SendButton {
+          margin: 5px; }
+      * body .OrderPage .ButtonsDiv {
+        padding: 100px 30px 0 0;
+        height: 720px;
+        width: 65%;
+        display: inline-block;
+        overflow: hidden; }
+        * body .OrderPage .ButtonsDiv .SpecialButtonsDiv {
+          height: 9%; }
+          * body .OrderPage .ButtonsDiv .SpecialButtonsDiv .Allergy {
+            background-color: #FF6382;
+            opacity: 50%; }
+          * body .OrderPage .ButtonsDiv .SpecialButtonsDiv .Special {
+            background-color: #5E6494; }
+          * body .OrderPage .ButtonsDiv .SpecialButtonsDiv .Same-Time {
+            background-color: #c0b9dd; }
+          * body .OrderPage .ButtonsDiv .SpecialButtonsDiv .SingleSpecialButton {
+            width: 31.4%;
+            margin: 5px;
+            height: 70%; }
+        * body .OrderPage .ButtonsDiv .TimeButtonsDiv {
+          margin: 2.5% 0; }
+          * body .OrderPage .ButtonsDiv .TimeButtonsDiv .SingleTimeButton {
+            background-color: #c4c4c4;
+            width: 18%;
+            margin: 3px 5%;
+            height: 60px;
+            width: 60px;
+            border-radius: 50%; }
+        * body .OrderPage .ButtonsDiv .FoodButtonsDiv {
+          height: 86%; }
+          * body .OrderPage .ButtonsDiv .FoodButtonsDiv .LightGray {
+            background-color: #D9D9D9; }
+          * body .OrderPage .ButtonsDiv .FoodButtonsDiv .Gray {
+            background-color: #A1A1A1; }
+          * body .OrderPage .ButtonsDiv .FoodButtonsDiv .SingleFoodButton {
+            height: 10%;
+            width: 18%;
+            margin: 8px; }
+    * body .ChefsBoard {
+      padding-left: 30px; }
+      * body .ChefsBoard .SingleOrder {
+        border-left: 2px solid #c4c4c4;
+        text-align: center;
+        display: inline-block;
+        padding: 5px; }
+        * body .ChefsBoard .SingleOrder .BoardNumber {
+          color: #c4c4c4; }
+        * body .ChefsBoard .SingleOrder .SingleDish {
+          margin: 2px 0 2px; }
+        * body .ChefsBoard .SingleOrder .TableNumberDiv {
+          font-size: 40px;
+          margin: 0; }
+        * body .ChefsBoard .SingleOrder .AllergyDiv {
+          color: white;
+          background-color: #c4c4c4;
+          margin: 2px 0 2px; }
+
+/*# sourceMappingURL=SassStyle.css.map */
