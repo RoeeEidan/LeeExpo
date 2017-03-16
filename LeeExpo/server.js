@@ -3,10 +3,10 @@ const app = express();
 
 const PORT = process.env.PORT || 8080;
 
-app.use(express.static('public'));
+app.use(express.static('build'));
 
 app.get('/', function (req, res) {
-  res.sendfile('./public/index.html')
+  res.sendfile('./build/index.html')
 })
 
 app.listen(PORT , function () {

@@ -88,13 +88,12 @@ class Navbar extends React.Component {
         const NewThisOrder = this.state.ThisOrder;
         if (x === 'Same-Time') {
             NewThisOrder.push('Same-Time')
-            while ((isNaN(NewThisOrder[(NewThisOrder.length - y)])) && (y < NewThisOrder.length)) {
+            while ((isNaN(NewThisOrder[(NewThisOrder.length - y)])) && (y <= NewThisOrder.length)) {
                 if ((typeof NewThisOrder[(NewThisOrder.length - y)]) === 'object') {
                     NewThisOrder[(NewThisOrder.length - y)].sametime = 'Same-Time';
                 }
                 y++
             }
-
             this.setState({
                 ThisOrder: NewThisOrder
             })
@@ -137,7 +136,8 @@ class Navbar extends React.Component {
                     onChange: this.onChange,
                     onTableNumberChange: this.onTableNumberChange,
                     onAllergyChange: this.onAllergyChange,
-                    HandleFoodClick: this.HandleFoodClick
+                    HandleFoodClick: this.HandleFoodClick,
+                    onSpecialChange:this.onSpecialChange
 
                 })}
             </div>

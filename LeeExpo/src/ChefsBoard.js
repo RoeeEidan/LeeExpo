@@ -5,20 +5,20 @@ class ChefsBoard extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            MaxHeight:'',
+            MaxHeight: '',
             ChefsBoard: this.props.ChefsBoardState,
             OldChefsBoard: [],
         }
         this.SingleDishOnClick = this.SingleDishOnClick.bind(this);
         this.HandleCock = this.HandleCock.bind(this);
-        this.HeightFunc=this.HeightFunc.bind(this);
+        this.HeightFunc = this.HeightFunc.bind(this);
     }
 
-    HeightFunc(){
-        let htmlBoard=document.getElementById("ChefsBoard")//.childNodes
+    HeightFunc() {
+        let htmlBoard = document.getElementById("ChefsBoard")//.childNodes
         let MaxHeight = htmlBoard.offsetHeight
         this.setState({
-            MaxHeight:MaxHeight
+            MaxHeight: MaxHeight
         })
     }
 
@@ -54,7 +54,7 @@ class ChefsBoard extends Component {
                         this.setState({
                             ChefsBoard: Board
                         })
-                    },T*1000)
+                    }, T * 1000)
                 } else {
                     let Time = (TrackObject.TotaleTime) + (TrackObject.OldTime) - (ThisFoodOrder[g].time);
                     let MyIndex = ChefsBoardIndex;
@@ -153,7 +153,7 @@ class ChefsBoard extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        
+
     }
 
     componentWillUnmount() {
@@ -162,7 +162,7 @@ class ChefsBoard extends Component {
     }
 
     render() {
-        let HeightStyle ={ height:(this.state.MaxHeight-1)}
+        let HeightStyle = { height: (this.state.MaxHeight - 1) }
         let NewChefsBoard = [];
         for (let i = 0; i < this.state.ChefsBoard.length; i++) { //buildes the display for each table
             let NewFoodOrder = [];
@@ -174,6 +174,18 @@ class ChefsBoard extends Component {
 
                     // STYLEING STUFF
                     let DishColor = 'blue';
+                    let BorderTop = '';
+                    let BorderBottom = ''
+
+                    if (this.state.ChefsBoard[i].FoodOrder[x].sametime === 'Same-Time' &&
+                        (typeof this.state.ChefsBoard[i].FoodOrder[x - 1] === 'number'
+                        || x === 0)) {
+                        BorderTop = '2px solid #2d3047'
+                    } if (this.state.ChefsBoard[i].FoodOrder[x].sametime === 'Same-Time' &&
+                        (typeof this.state.ChefsBoard[i].FoodOrder[x + 2] === 'number' ||
+                        x === this.state.ChefsBoard[i].FoodOrder.length - 2)){
+                        BorderBottom = '2px solid #2d3047'
+                    }
                     // let Transition = '1.5s';
                     // let Border = '2px solid black';
                     if (this.state.ChefsBoard[i].FoodOrder[x].state === 0) { //when the dish is just waiting
@@ -199,8 +211,20 @@ class ChefsBoard extends Component {
                     //     DishColor = 'green';
                     // }
                     NewFoodOrder.push(<div style={{
-                        color: DishColor
+                        color: DishColor,
+                        borderTop: BorderTop,
+                        borderBottom: BorderBottom
                     }} onClick={() => { this.SingleDishOnClick({ ChefsBoardIndex: i, FoodOrderIndex: x }) }} className='SingleDish' > {this.state.ChefsBoard[i].FoodOrder[x].name}</div>)
+                    if(this.state.ChefsBoard[i].FoodOrder[x].special !== ''){
+                        let Green='#D1DBBD'
+                        if(this.state.ChefsBoard[i].FoodOrder[x].state === 3){
+                            Green ='#0BAE45'
+                        }
+                        let SpecialStyle ={color:Green}
+                        NewFoodOrder.push(
+                            <div style={SpecialStyle} className='SpecialInstructions'>{this.state.ChefsBoard[i].FoodOrder[x].special}</div>
+                        )   
+                    }
                 } else if (typeof this.state.ChefsBoard[i].FoodOrder[x] === 'number') {
                     NewFoodOrder.push(<div className='BoardNumber'>{this.state.ChefsBoard[i].FoodOrder[x]}</div>)
                 } else { console.log(' shouldnt log') }

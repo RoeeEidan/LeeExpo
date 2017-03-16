@@ -1,7 +1,7 @@
 $backgroundColor:white;
 $WidthAndTypeDishBorder:2px solid;
 $MarginBtweenDishs:2px 0 2px; 
-$LighterBlue:#5E6494;
+$LighterBlue:#6D73AB;
 $Blue:#2d3047;
 $Purple:#c0b9dd;
 $Pink:#D81159;
@@ -9,6 +9,7 @@ $LighterPink:#FF6382;
 $Gray:#c4c4c4;
 $OrderListBorder: 2px solid $Gray;
 $NumberColor:#42B3BA;
+$Green:#00A856;
 
 *{
   background-color: $backgroundColor;
@@ -65,13 +66,14 @@ $NumberColor:#42B3BA;
           .NewOrder{
             text-align: center;
             box-shadow: 0px 0px 25px #888888;
-            height:660;
+            height:660px;
             background-color:  $backgroundColor;
             display:'inline-block';
             overflow:'auto';
             margin:30px;
             margin-left: 60px;
-            max-width: 420px;
+            max-width: 400px;
+            padding-bottom: 25px;
             .Title{
               margin-bottom: 15px;
             }
@@ -89,7 +91,8 @@ $NumberColor:#42B3BA;
             .orderlist{
               border-top: $OrderListBorder;
               padding:20px 0 30px;
-              height: 480px;
+              height: 75%;
+              max-height:480px;
               overflow: scroll;
                 .Special2{
                   color:$LighterBlue;
@@ -103,10 +106,14 @@ $NumberColor:#42B3BA;
             }
             .SendButton{
               margin:5px;
+              width:80%;
+              background-color: $Blue;
+              color: white;
+              border:$OrderListBorder;
             }
           }
           .ButtonsDiv{
-            padding: 100px 30px 0 0;
+            padding: 80px 30px 0 0;
             height: 720px;
             width:65%;
             display: inline-block;
@@ -152,7 +159,7 @@ $NumberColor:#42B3BA;
                 .SingleFoodButton{
                   height: 10%;
                   width:18%;
-                  margin:8px;
+                  margin:10px 8px;
                 }
               }
           }
@@ -164,6 +171,9 @@ $NumberColor:#42B3BA;
             text-align: center;
             display: inline-block;
             padding: 5px;
+              .SpecialInstructions{
+                color:$Green;
+              }
               .BoardNumber{
                 color:$Gray;
               }
@@ -177,7 +187,7 @@ $NumberColor:#42B3BA;
               .AllergyDiv{
                 color: white;
                 background-color: $Gray;
-                margin:$MarginBtweenDishs;
+                margin:#414566;
               }
           }
         }
