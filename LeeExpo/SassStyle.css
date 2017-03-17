@@ -1,4 +1,6 @@
 * {
+  -webkit-transition-timing-function: ease;
+  transition: 0.5s;
   background-color: white; }
   * input {
     text-align: center; }
@@ -7,7 +9,7 @@
     padding: 0;
     font-family: sans-serif; }
     * body .NavBarDiv {
-      background-color: white;
+      background-color: #F2F2F2;
       height: 150px;
       padding: 0;
       height: 100%;
@@ -18,22 +20,24 @@
         height: 37px;
         color: black;
         text-align: center;
-        background-color: white;
+        background-color: #F2F2F2;
         padding-top: 9px;
         display: inline-block;
         border-right: 2px solid #c4c4c4; }
         * body .NavBarDiv .NavBarLeftButton .NavBarOrderButton {
           width: 49%;
-          margin: auto; }
+          margin: auto;
+          background-color: #F2F2F2; }
       * body .NavBarDiv .NavBarRightButton {
         width: 49.7%;
         height: 37px;
         color: black;
         text-align: center;
-        background-color: white;
+        background-color: #F2F2F2;
         padding-top: 9px;
         display: inline-block; }
         * body .NavBarDiv .NavBarRightButton .NavBarBoardButton {
+          background-color: #F2F2F2;
           width: 49%;
           margin: auto; }
     * body .OrderPage {
@@ -72,6 +76,10 @@
           overflow: scroll; }
           * body .OrderPage .NewOrder .orderlist .Special2 {
             color: #6D73AB; }
+            * body .OrderPage .NewOrder .orderlist .Special2 .keyboard {
+              color: black; }
+            * body .OrderPage .NewOrder .orderlist .Special2 input {
+              color: black; }
           * body .OrderPage .NewOrder .orderlist .Same-Time2 {
             color: #c0b9dd; }
           * body .OrderPage .NewOrder .orderlist .Number {
@@ -83,11 +91,13 @@
           color: white;
           border: 2px solid #c4c4c4; }
       * body .OrderPage .ButtonsDiv {
-        padding: 80px 30px 0 0;
+        padding: 30px 30px 0 0;
         height: 720px;
         width: 65%;
         display: inline-block;
         overflow: hidden; }
+        * body .OrderPage .ButtonsDiv .Undo {
+          background-color: #c4c4c4; }
         * body .OrderPage .ButtonsDiv .SpecialButtonsDiv {
           height: 9%; }
           * body .OrderPage .ButtonsDiv .SpecialButtonsDiv .Allergy {
@@ -121,12 +131,32 @@
             width: 18%;
             margin: 10px 8px; }
     * body .ChefsBoard {
+      padding-top: 20px;
       padding-left: 30px; }
       * body .ChefsBoard .SingleOrder {
         border-left: 2px solid #c4c4c4;
         text-align: center;
         display: inline-block;
-        padding: 5px; }
+        padding: 5px;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: column;
+        flex-direction: column; }
+        * body .ChefsBoard .SingleOrder .SingleFoodOrder {
+          font-size: 15px;
+          flex-grow: 1; }
+        * body .ChefsBoard .SingleOrder .RemoveDiv {
+          display: block;
+          margin: auto; }
+          * body .ChefsBoard .SingleOrder .RemoveDiv .RemoveButton {
+            background-color: #F2F2F2;
+            color: #c4c4c4;
+            width: 35px;
+            margin: auto;
+            margin-top: 8px;
+            border: 1px solid #c4c4c4;
+            border-radius: 50%;
+            font-size: 22px; }
         * body .ChefsBoard .SingleOrder .SpecialInstructions {
           color: #00A856; }
         * body .ChefsBoard .SingleOrder .BoardNumber {
@@ -137,8 +167,8 @@
           font-size: 40px;
           margin: 0; }
         * body .ChefsBoard .SingleOrder .AllergyDiv {
+          height: 19.09px;
           color: white;
-          background-color: #c4c4c4;
           margin: #414566; }
 
 /*# sourceMappingURL=SassStyle.css.map */

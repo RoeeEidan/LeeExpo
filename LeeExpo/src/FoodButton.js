@@ -1,5 +1,5 @@
 import React from 'react';
-import NewOrder from './NewOrder';
+// import NewOrder from './NewOrder';
 import { FoodMenu } from './FoodMenu';
 
 const Time = [10, 15, 20, 30, 45];
@@ -51,6 +51,9 @@ class FoodButton extends React.Component {
                 </div>
                 <div className='FoodButtonsDiv'>
                     {FoodButtonArray}
+                    <button className='Undo' onClick={this.props.Undo}>
+                        Undo
+                    </button>
                 </div>
             </div>
         )

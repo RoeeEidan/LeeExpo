@@ -1,5 +1,7 @@
 import React from 'react';
 import Input from './Input';
+import { OpenInput } from './FoodMenu';
+
 
 
 
@@ -8,10 +10,13 @@ class NewOrder extends React.Component {
     constructor() {
         super()
         this.state = {
-            ulHeight: 480
+            ulHeight: ''
 
         }
     }
+
+
+
     componentDidUpdate() {
         let myCheck = document.getElementById("myCheck").offsetHeight;
         let ulHeight = 543 - myCheck;
@@ -20,10 +25,15 @@ class NewOrder extends React.Component {
                 ulHeight: ulHeight
             })
         }
-        // return true
     }
-    componentWillUpdate() {
-
+    componentDidMount() {
+        let myCheck = document.getElementById("myCheck").offsetHeight;
+        let ulHeight = 543 - myCheck;
+        if (this.state.ulHeight !== ulHeight) {
+            this.setState({
+                ulHeight: ulHeight
+            })
+        }
     }
 
     render() {
@@ -52,7 +62,7 @@ class NewOrder extends React.Component {
                     id="sendbutton"
                 >
                     Send
-                    </button>
+                </button>
             </div>
         )
     }

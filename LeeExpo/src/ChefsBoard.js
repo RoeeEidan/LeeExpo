@@ -12,7 +12,9 @@ class ChefsBoard extends Component {
         this.SingleDishOnClick = this.SingleDishOnClick.bind(this);
         this.HandleCock = this.HandleCock.bind(this);
         this.HeightFunc = this.HeightFunc.bind(this);
+        
     }
+
 
     HeightFunc() {
         let htmlBoard = document.getElementById("ChefsBoard")//.childNodes
@@ -36,10 +38,30 @@ class ChefsBoard extends Component {
             if (typeof ThisFoodOrder[g] === 'string') {
                 console.log('it was a string')
             } else if (typeof ThisFoodOrder[g] === 'object') {
+                if(ThisFoodOrder[g].sametime === 'Same-Time' && g === 0){ //if the first cource is same time
+                    while(ThisFoodOrder[g]!=='Same-Time'){
+                        if(ThisFoodOrder[g].time > TrackObject.LongCurrentTime){
+                            TrackObject.LongCurrentTime = ThisFoodOrder[g].time;
+                        }
+                        g++
+                        console.log(g)
+                    }
+                    for(let x=0; x < g; x++){
+                        let MyIndex = ChefsBoardIndex;
+                        let w = x;
+                        setTimeout(()=>{
+                            let Board = this.state.ChefsBoard;
+                            Board[MyIndex].FoodOrder[w].state = 1
+                            this.setState({
+                            ChefsBoard: Board
+                            })
+                        },(TrackObject.LongCurrentTime - ThisFoodOrder[x].time)*1000)
+                    }
+                }else{
                 if (TrackObject.LongCurrentTime < ThisFoodOrder[g].time) {
                     TrackObject.LongCurrentTime = ThisFoodOrder[g].time
                 }
-                if (TrackObject.TotaleTime === 0) {
+                if (TrackObject.TotaleTime === 0) {//if this is the first cource
                     let Board = this.state.ChefsBoard;
                     Board[ChefsBoardIndex].FoodOrder[g].state = 2
                     this.setState({
@@ -70,6 +92,7 @@ class ChefsBoard extends Component {
                         })
                     }, Time * 1000, w, MyIndex)
                 }
+            }
             } else if (typeof ThisFoodOrder[g] === 'number') {
                 TrackObject.OldTime = TrackObject.LongCurrentTime;
                 TrackObject.TotaleTime += ThisFoodOrder[g];
@@ -162,7 +185,6 @@ class ChefsBoard extends Component {
     }
 
     render() {
-        let HeightStyle = { height: (this.state.MaxHeight - 1) }
         let NewChefsBoard = [];
         for (let i = 0; i < this.state.ChefsBoard.length; i++) { //buildes the display for each table
             let NewFoodOrder = [];
@@ -217,7 +239,7 @@ class ChefsBoard extends Component {
                     }} onClick={() => { this.SingleDishOnClick({ ChefsBoardIndex: i, FoodOrderIndex: x }) }} className='SingleDish' > {this.state.ChefsBoard[i].FoodOrder[x].name}</div>)
                     if(this.state.ChefsBoard[i].FoodOrder[x].special !== ''){
                         let Green='#D1DBBD'
-                        if(this.state.ChefsBoard[i].FoodOrder[x].state === 3){
+                        if(this.state.ChefsBoard[i].FoodOrder[x].state === 3 || this.state.ChefsBoard[i].FoodOrder[x].state === 1){
                             Green ='#0BAE45'
                         }
                         let SpecialStyle ={color:Green}
@@ -229,16 +251,27 @@ class ChefsBoard extends Component {
                     NewFoodOrder.push(<div className='BoardNumber'>{this.state.ChefsBoard[i].FoodOrder[x]}</div>)
                 } else { console.log(' shouldnt log') }
             }
+            let SingleOrderStyle = { height: (this.state.MaxHeight - 1), display: this.state.ChefsBoard[i].Display };
+            let AllergyDivStyle;
+            if(this.state.ChefsBoard[i].Allergy !== ''){
+                AllergyDivStyle={backgroundColor:'#c4c4c4'}
+            }else if(this.state.ChefsBoard[i].Allergy === ''){
+                AllergyDivStyle={backgroundColor:'#F2F2F2'}
+            }
+            
             NewChefsBoard.push(
-                <div className='col-md-1 SingleOrder' style={HeightStyle}>
+                <div className='col-md-1 SingleOrder flex-container' style={SingleOrderStyle}>
                     <div className='TableNumberDiv'>
                         {this.state.ChefsBoard[i].TableNumber}
                     </div>
-                    <div className='AllergyDiv'>
+                    <div className='AllergyDiv' style={AllergyDivStyle}>
                         {this.state.ChefsBoard[i].Allergy}
                     </div>
-                    <div>
+                    <div className='SingleFoodOrder '>
                         {NewFoodOrder}
+                    </div>
+                    <div className='RemoveDiv flex-item'>
+                        <button className = 'RemoveButton' onClick = {()=>{this.props.RemoveOrder(i)}}>X</button>
                     </div>
                 </div>
             )

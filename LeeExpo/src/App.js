@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import NewOrder from './NewOrder';
 import FoodButton from './FoodButton';
-import {FoodMenu} from './FoodMenu';
+import { FoodMenu } from './FoodMenu';
 import Input from './Input';
 import './../SassStyle.css';
 
-const SpecialArray = ['Special', 'Allergy', 10,15, 20, 30, 45];
+const NumbersArray = [ 10, 15, 20, 30, 45];
 
 class App extends Component {
   constructor(props) {
@@ -16,20 +16,21 @@ class App extends Component {
       Allergy: this.props.Allergy,
       TableNumber: this.props.TableNumber
     }
-    // this.Checking=this.Checking.bind(this);
   }
-  // Checking(){
-  //   let div = document.getElementById("myCheck");
-  //   let input = div.lastChild.children;
-  //   // console.log(input.click);
-  //   input.click();
-  // }
-  componentWillReceiveProps(nextProps){
+
+  componentDidUpdate() {
+      
+    
+      
+    }
+  
+
+  componentWillReceiveProps(nextProps) {
     this.setState({
-      ChefsBoard:nextProps.ChefsBoardState,
-      TableNumber:nextProps.TableNumber,
-      Allergy:nextProps.Allergy,
-      ThisOrder:nextProps.ThisOrder
+      ChefsBoard: nextProps.ChefsBoardState,
+      TableNumber: nextProps.TableNumber,
+      Allergy: nextProps.Allergy,
+      ThisOrder: nextProps.ThisOrder
     })
   }
 
@@ -46,7 +47,6 @@ class App extends Component {
               value={this.props.value}
               onChange={this.props.onAllergyChange}
             />
-             {/*{this.Checking()}*/}
           </p>)
 
         } else if (this.state.ThisOrder[i] === 'Special') {
@@ -61,9 +61,9 @@ class App extends Component {
           ThisOrderArray.push(<p className='Same-Time2'>{this.state.ThisOrder[i]}</p>)
         }
         else {
-          for (let w = 2; w < SpecialArray.length; w++) { // loops throu the time and special array
-            if (SpecialArray[w] === this.state.ThisOrder[i]) {//checks if thers a match
-              if (Number.isInteger(SpecialArray[w])) { //checks if its a number
+          for (let w = 0; w < NumbersArray.length; w++) { // loops throu the time array
+            if (NumbersArray[w] === this.state.ThisOrder[i]) {//checks if thers a match
+              if (Number.isInteger(NumbersArray[w])) { //checks if its a number
                 ThisOrderArray.push(<p className='Number'>*** {this.state.ThisOrder[i]} ***</p>)
               } else {//we are already after a match to time and special array so if thers no match with numbers so thers with special
                 // ThisOrderArray.push(<p>{this.state.ThisOrder[i]}</p>)
@@ -92,7 +92,10 @@ class App extends Component {
           onAllergyChange={this.props.onAllergyChange}
           HandleSendClick={this.props.HandleSendClick}
         />
-        <FoodButton FoodClick={this.props.HandleFoodClick} />
+        <FoodButton 
+        FoodClick={this.props.HandleFoodClick}
+        Undo={this.props.Undo}
+        />
       </div>
     )
   }
