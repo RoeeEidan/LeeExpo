@@ -170,9 +170,12 @@
           font-size: 40px;
           margin: 0; }
         * body .ChefsBoard .SingleOrder .AllergyDiv {
-          height: 19.09px;
+          min-height: 19.09px;
           color: white;
           margin: #414566; }
+
+.keyboard .keyboard-wrapper {
+  display: inherit; }
 
 #sendbutton {
   transition: 0s; }

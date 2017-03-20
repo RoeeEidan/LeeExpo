@@ -226,7 +226,7 @@ $LightGray:#F2F2F2;
                 margin:0;
               }
               .AllergyDiv{
-                height: 19.09px;
+                min-height: 19.09px;
                 color: white;
                 // background-color: $LightGray;
                 margin:#414566;
@@ -235,6 +235,11 @@ $LightGray:#F2F2F2;
         }
 
     }
+}
+.keyboard {
+  .keyboard-wrapper{
+    display: inherit;
+  }
 }
 
 #sendbutton{
