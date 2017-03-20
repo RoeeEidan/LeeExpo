@@ -1,9 +1,5 @@
 import React from 'react';
 import Input from './Input';
-import { OpenInput } from './FoodMenu';
-
-
-
 
 class NewOrder extends React.Component {
 
@@ -11,11 +7,8 @@ class NewOrder extends React.Component {
         super()
         this.state = {
             ulHeight: ''
-
         }
     }
-
-
 
     componentDidUpdate() {
         let myCheck = document.getElementById("myCheck").offsetHeight;
@@ -37,8 +30,8 @@ class NewOrder extends React.Component {
     }
 
     render() {
+        let SendButtonStyle = {transition:0}
         let ulStyle = { height: this.state.ulHeight }
-        console.log('Table Number is  ' + this.props.TableNumber);
         const title = 'Table Number';
         return (
             <div className='col-md-3 NewOrder'>
@@ -56,6 +49,7 @@ class NewOrder extends React.Component {
                 </ul>
 
                 <button
+                    style={SendButtonStyle}
                     onClick={this.props.HandleSendClick}
                     type="button"
                     className="btn SendButton"

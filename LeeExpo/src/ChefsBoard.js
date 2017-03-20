@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { FoodMenu, MenuItem } from './FoodMenu';
 
 class ChefsBoard extends Component {
     constructor(props) {
@@ -12,9 +11,7 @@ class ChefsBoard extends Component {
         this.SingleDishOnClick = this.SingleDishOnClick.bind(this);
         this.HandleCock = this.HandleCock.bind(this);
         this.HeightFunc = this.HeightFunc.bind(this);
-        
     }
-
 
     HeightFunc() {
         let htmlBoard = document.getElementById("ChefsBoard")//.childNodes
@@ -38,61 +35,60 @@ class ChefsBoard extends Component {
             if (typeof ThisFoodOrder[g] === 'string') {
                 console.log('it was a string')
             } else if (typeof ThisFoodOrder[g] === 'object') {
-                if(ThisFoodOrder[g].sametime === 'Same-Time' && g === 0){ //if the first cource is same time
-                    while(ThisFoodOrder[g]!=='Same-Time'){
-                        if(ThisFoodOrder[g].time > TrackObject.LongCurrentTime){
+                if (ThisFoodOrder[g].sametime === 'Same-Time' && g === 0) { //if the first cource is same time
+                    while (ThisFoodOrder[g] !== 'Same-Time') {
+                        if (ThisFoodOrder[g].time > TrackObject.LongCurrentTime) {
                             TrackObject.LongCurrentTime = ThisFoodOrder[g].time;
                         }
                         g++
                         console.log(g)
                     }
-                    for(let x=0; x < g; x++){
+                    for (let x = 0; x < g; x++) {
                         let MyIndex = ChefsBoardIndex;
                         let w = x;
-                        setTimeout(()=>{
+                        setTimeout(() => {
                             let Board = this.state.ChefsBoard;
                             Board[MyIndex].FoodOrder[w].state = 1
                             this.setState({
-                            ChefsBoard: Board
+                                ChefsBoard: Board
                             })
-                        },(TrackObject.LongCurrentTime - ThisFoodOrder[x].time)*1000)
+                        }, (TrackObject.LongCurrentTime - ThisFoodOrder[x].time) * 1000)
                     }
-                }else{
-                if (TrackObject.LongCurrentTime < ThisFoodOrder[g].time) {
-                    TrackObject.LongCurrentTime = ThisFoodOrder[g].time
-                }
-                if (TrackObject.TotaleTime === 0) {//if this is the first cource
-                    let Board = this.state.ChefsBoard;
-                    Board[ChefsBoardIndex].FoodOrder[g].state = 2
-                    this.setState({
-                        ChefsBoard: Board
-                    })
-                    let I = ChefsBoardIndex;
-                    let a = g;
-                    let T = Board[ChefsBoardIndex].FoodOrder[g].time;
-                    setTimeout(() => {
-                        let VeryNewBoard = this.state.ChefsBoard;
-                        VeryNewBoard[I].FoodOrder[g].state = 3;
-                        this.setState({
-                            ChefsBoard: Board
-                        })
-                    }, T * 1000)
                 } else {
-                    let Time = (TrackObject.TotaleTime) + (TrackObject.OldTime) - (ThisFoodOrder[g].time);
-                    let MyIndex = ChefsBoardIndex;
-                    let w = g;
-                    setTimeout(() => {
-                        console.log(w);
-                        console.log(MyIndex)
+                    if (TrackObject.LongCurrentTime < ThisFoodOrder[g].time) {
+                        TrackObject.LongCurrentTime = ThisFoodOrder[g].time
+                    }
+                    if (TrackObject.TotaleTime === 0) {//if this is the first cource
                         let Board = this.state.ChefsBoard;
-                        Board[MyIndex].FoodOrder[w].state = 1
-                        console.log('Timeout Passed start cocking')
+                        Board[ChefsBoardIndex].FoodOrder[g].state = 2
                         this.setState({
                             ChefsBoard: Board
                         })
-                    }, Time * 1000, w, MyIndex)
+                        let I = ChefsBoardIndex;
+                        let T = Board[ChefsBoardIndex].FoodOrder[g].time;
+                        setTimeout(() => {
+                            let VeryNewBoard = this.state.ChefsBoard;
+                            VeryNewBoard[I].FoodOrder[g].state = 3;
+                            this.setState({
+                                ChefsBoard: Board
+                            })
+                        }, T * 1000)
+                    } else {
+                        let Time = (TrackObject.TotaleTime) + (TrackObject.OldTime) - (ThisFoodOrder[g].time);
+                        let MyIndex = ChefsBoardIndex;
+                        let w = g;
+                        setTimeout(() => {
+                            console.log(w);
+                            console.log(MyIndex)
+                            let Board = this.state.ChefsBoard;
+                            Board[MyIndex].FoodOrder[w].state = 1
+                            console.log('Timeout Passed start cocking')
+                            this.setState({
+                                ChefsBoard: Board
+                            })
+                        }, Time * 1000, w, MyIndex)
+                    }
                 }
-            }
             } else if (typeof ThisFoodOrder[g] === 'number') {
                 TrackObject.OldTime = TrackObject.LongCurrentTime;
                 TrackObject.TotaleTime += ThisFoodOrder[g];
@@ -161,9 +157,6 @@ class ChefsBoard extends Component {
             }
         } else if (OldLength === NewLength) {
             console.log('ChefsBoard didnt change')
-            // for (let i = 0; i < NewLength; i++) {
-            //     this.HandleCock(i);
-            // }
         } else {
             for (let i = 0; i < NewLength; i++) {
                 this.HandleCock(i);
@@ -181,18 +174,15 @@ class ChefsBoard extends Component {
 
     componentWillUnmount() {
         localStorage.setItem("ChefsOldBoard", JSON.stringify(this.state.ChefsBoard));
-        console.log('setting the LS')
     }
 
     render() {
         let NewChefsBoard = [];
         for (let i = 0; i < this.state.ChefsBoard.length; i++) { //buildes the display for each table
+            let specialBorderBottom = '';
             let NewFoodOrder = [];
             for (let x = 0; x < this.state.ChefsBoard[i].FoodOrder.length; x++) { // Loops throu each order
-                if (typeof this.state.ChefsBoard[i].FoodOrder[x] === 'string') {
-                    console.log('was same time or allergy or special')
-                }
-                else if (typeof this.state.ChefsBoard[i].FoodOrder[x] === 'object') {
+                if (typeof this.state.ChefsBoard[i].FoodOrder[x] === 'object') {
 
                     // STYLEING STUFF
                     let DishColor = 'blue';
@@ -201,21 +191,18 @@ class ChefsBoard extends Component {
 
                     if (this.state.ChefsBoard[i].FoodOrder[x].sametime === 'Same-Time' &&
                         (typeof this.state.ChefsBoard[i].FoodOrder[x - 1] === 'number'
-                        || x === 0)) {
+                            || x === 0)) {
                         BorderTop = '2px solid #2d3047'
-                    } if (this.state.ChefsBoard[i].FoodOrder[x].sametime === 'Same-Time' &&
-                        (typeof this.state.ChefsBoard[i].FoodOrder[x + 2] === 'number' ||
-                        x === this.state.ChefsBoard[i].FoodOrder.length - 2)){
+                    } if (this.state.ChefsBoard[i].FoodOrder[x].sametime === 'Same-Time' &&  //object includes same time
+                        (typeof this.state.ChefsBoard[i].FoodOrder[x + 2] === 'number' || //next intem is num 
+                            x === this.state.ChefsBoard[i].FoodOrder.length - 2)) {//
                         BorderBottom = '2px solid #2d3047'
                     }
-                    // let Transition = '1.5s';
-                    // let Border = '2px solid black';
                     if (this.state.ChefsBoard[i].FoodOrder[x].state === 0) { //when the dish is just waiting
                         DishColor = '#c4c4c4'
                     }
                     if (this.state.ChefsBoard[i].FoodOrder[x].state === 1) { //when the dish neeeds to cock
                         DishColor = '#FF1469'
-                        // Transition = `${this.state.ChefsBoard[i].FoodOrder[x].time * 2}s`
                     }
                     if (this.state.ChefsBoard[i].FoodOrder[x].state === 2) {//when a dish is cocking
                         DishColor = 'black'
@@ -226,39 +213,35 @@ class ChefsBoard extends Component {
                     if (this.state.ChefsBoard[i].FoodOrder[x].state === 4) {//when a dish got sent
                         DishColor = '#9BB7BF'
                     }
-                    // if (this.state.ChefsBoard[i].FoodOrder[x].state >= 4 && this.state.ChefsBoard[i].FoodOrder[x].state % 2 === 0) { //ready to pick up
-                    //     DishColor = 'green'
-                    // }
-                    // if (this.state.ChefsBoard[i].FoodOrder[x].needtofire === true) {
-                    //     DishColor = 'green';
-                    // }
                     NewFoodOrder.push(<div style={{
                         color: DishColor,
                         borderTop: BorderTop,
                         borderBottom: BorderBottom
                     }} onClick={() => { this.SingleDishOnClick({ ChefsBoardIndex: i, FoodOrderIndex: x }) }} className='SingleDish' > {this.state.ChefsBoard[i].FoodOrder[x].name}</div>)
-                    if(this.state.ChefsBoard[i].FoodOrder[x].special !== ''){
-                        let Green='#D1DBBD'
-                        if(this.state.ChefsBoard[i].FoodOrder[x].state === 3 || this.state.ChefsBoard[i].FoodOrder[x].state === 1){
-                            Green ='#0BAE45'
+                    if (this.state.ChefsBoard[i].FoodOrder[x].special !== '') {
+                        let Green = '#D1DBBD'
+                        if (this.state.ChefsBoard[i].FoodOrder[x].state === 3 || this.state.ChefsBoard[i].FoodOrder[x].state === 1) {
+                            Green = '#0BAE45'
+                        } if (this.state.ChefsBoard[i].FoodOrder[x + 2] === 'Same-Time') {
+                                specialBorderBottom = '2px solid #2d3047'
                         }
-                        let SpecialStyle ={color:Green}
+                        let SpecialStyle = { color: Green, borderBottom: specialBorderBottom };
                         NewFoodOrder.push(
                             <div style={SpecialStyle} className='SpecialInstructions'>{this.state.ChefsBoard[i].FoodOrder[x].special}</div>
-                        )   
+                        )
                     }
                 } else if (typeof this.state.ChefsBoard[i].FoodOrder[x] === 'number') {
-                    NewFoodOrder.push(<div className='BoardNumber'>{this.state.ChefsBoard[i].FoodOrder[x]}</div>)
+                    NewFoodOrder.push(<div className='BoardNumber'>***{this.state.ChefsBoard[i].FoodOrder[x]}***</div>)
                 } else { console.log(' shouldnt log') }
             }
             let SingleOrderStyle = { height: (this.state.MaxHeight - 1), display: this.state.ChefsBoard[i].Display };
             let AllergyDivStyle;
-            if(this.state.ChefsBoard[i].Allergy !== ''){
-                AllergyDivStyle={backgroundColor:'#c4c4c4'}
-            }else if(this.state.ChefsBoard[i].Allergy === ''){
-                AllergyDivStyle={backgroundColor:'#F2F2F2'}
+            if (this.state.ChefsBoard[i].Allergy !== '') {
+                AllergyDivStyle = { backgroundColor: '#c4c4c4' }
+            } else if (this.state.ChefsBoard[i].Allergy === '') {
+                AllergyDivStyle = { backgroundColor: '#F2F2F2' }
             }
-            
+
             NewChefsBoard.push(
                 <div className='col-md-1 SingleOrder flex-container' style={SingleOrderStyle}>
                     <div className='TableNumberDiv'>
@@ -271,7 +254,7 @@ class ChefsBoard extends Component {
                         {NewFoodOrder}
                     </div>
                     <div className='RemoveDiv flex-item'>
-                        <button className = 'RemoveButton' onClick = {()=>{this.props.RemoveOrder(i)}}>X</button>
+                        <button className='RemoveButton' onClick={() => { this.props.RemoveOrder(i) }}>X</button>
                     </div>
                 </div>
             )

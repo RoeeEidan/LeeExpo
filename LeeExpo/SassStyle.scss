@@ -10,6 +10,7 @@ $Gray:#c4c4c4;
 $OrderListBorder: 2px solid $Gray;
 $NumberColor:#42B3BA;
 $Green:#00A856;
+$LightGray:#F2F2F2;
 
 *{
   -webkit-transition-timing-function: ease;
@@ -23,7 +24,7 @@ $Green:#00A856;
       padding: 0;
       font-family: sans-serif;
       .NavBarDiv{
-          background-color: #F2F2F2;
+          background-color: $LightGray;
           height: 150px;
           padding: 0;
           height: 100%;
@@ -34,14 +35,14 @@ $Green:#00A856;
               height: 37px;
               color: black;
               text-align: center;
-              background-color:#F2F2F2;
+              background-color:$LightGray;
               padding-top: 9px;
               display: inline-block;
               border-right: 2px solid #c4c4c4;
                 .NavBarOrderButton{
                   width: 49%;
                   margin: auto;
-                  background-color: #F2F2F2;
+                  background-color: $LightGray;
                 }
             }
             .NavBarRightButton{
@@ -49,11 +50,11 @@ $Green:#00A856;
               height: 37px;
               color: black;
               text-align: center;
-              background-color:#F2F2F2;
+              background-color:$LightGray;
               padding-top: 9px;
               display: inline-block;
               .NavBarBoardButton{
-                background-color:#F2F2F2;
+                background-color:$LightGray;
                 width: 49%;
                 margin: auto;
               }
@@ -94,7 +95,7 @@ $Green:#00A856;
             }
             .orderlist{
               border-top: $OrderListBorder;
-              padding:20px 0 30px;
+              padding:20px 0 45px;
               height: 75%;
               max-height:480px;
               overflow: scroll;
@@ -129,7 +130,11 @@ $Green:#00A856;
             display: inline-block;
             overflow: hidden;
               .Undo{
-                background-color: $Gray;
+                background-color: $LightGray;
+                width:97.4%;
+                height: 10%;
+                margin-top: 10px;
+
               }
               .SpecialButtonsDiv{
                 height:9%;
@@ -178,8 +183,7 @@ $Green:#00A856;
           }
         }
         .ChefsBoard{
-          padding-top:20px;
-          padding-left: 30px;
+          padding:30px;
           .SingleOrder{
             border-left: 2px solid $Gray;
             text-align: center;
@@ -197,7 +201,7 @@ $Green:#00A856;
                 display: block;
                 margin: auto;
                 .RemoveButton{
-                  background-color: #F2F2F2;
+                  background-color: $LightGray;
                   color: $Gray;
                   width: 35px;
                   margin: auto;
@@ -205,6 +209,7 @@ $Green:#00A856;
                   border: 1px solid $Gray;
                   border-radius: 50%;
                   font-size: 22px;
+                  padding-top: 4px;
                 }
               }
               .SpecialInstructions{
@@ -223,7 +228,7 @@ $Green:#00A856;
               .AllergyDiv{
                 height: 19.09px;
                 color: white;
-                // background-color: #F2F2F2;
+                // background-color: $LightGray;
                 margin:#414566;
               }
           }
@@ -232,3 +237,6 @@ $Green:#00A856;
     }
 }
 
+#sendbutton{
+  transition: 0s;
+}

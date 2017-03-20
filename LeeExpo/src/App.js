@@ -17,14 +17,8 @@ class App extends Component {
       TableNumber: this.props.TableNumber
     }
   }
-
-  componentDidUpdate() {
-      
-    
-      
+  componentDidUpdate() { 
     }
-  
-
   componentWillReceiveProps(nextProps) {
     this.setState({
       ChefsBoard: nextProps.ChefsBoardState,
@@ -35,7 +29,6 @@ class App extends Component {
   }
 
   render() {
-    // console.log(this.state.ThisOrder)
     const AllergyRender = [];
     const ThisOrderArray = [];
     if (this.state.ThisOrder.length !== 0) {
@@ -73,7 +66,6 @@ class App extends Component {
           }
           for (let z = 0; z < FoodMenu.length; z++) {//loops thro the manu to check match
             if (this.state.ThisOrder[i].name === FoodMenu[z].name) {
-              console.log('theres a march')
               ThisOrderArray.push(<p>{this.state.ThisOrder[i].name}</p>)
             }
           }

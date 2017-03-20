@@ -1,5 +1,4 @@
 import React from 'react';
-// import NewOrder from './NewOrder';
 import { FoodMenu } from './FoodMenu';
 
 const Time = [10, 15, 20, 30, 45];
@@ -11,7 +10,6 @@ class FoodButton extends React.Component {
         const SpecialButtonArray = [];
         const TimeButtonArray = [];
         const FoodButtonArray = [];
-        // FoodButtonArray.push(<div className='SpecialButtonDiv'>)
         for (let i = 0; i < Special.length; i++) {
             SpecialButtonArray.push(
                 <button onClick={() => { this.props.FoodClick(Special[i]) }} className={'SingleSpecialButton '+Special[i]}>{Special[i]}</button>
