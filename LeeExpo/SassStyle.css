@@ -142,7 +142,11 @@
             margin: 10px 8px; }
     * body .ChefsBoard {
       padding: 30px; }
+      * body .ChefsBoard .TimeDiv {
+        color: lightgrey;
+        text-align: center; }
       * body .ChefsBoard .SingleOrder {
+        padding: 0px;
         border-left: 2px solid #c4c4c4;
         text-align: center;
         display: inline-block;
@@ -177,7 +181,7 @@
           font-size: 40px;
           margin: 0; }
         * body .ChefsBoard .SingleOrder .AllergyDiv {
-          min-height: 19.09px;
+          min-height: 23.64px;
           color: white;
           margin: #414566; }
 

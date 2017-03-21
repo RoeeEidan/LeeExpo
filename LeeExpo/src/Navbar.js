@@ -15,7 +15,7 @@ class Navbar extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-
+            Time:'',
             Display: 'inherit',
             ChefsBoard: [],
             ThisOrder: [],
@@ -24,6 +24,7 @@ class Navbar extends React.Component {
         }
         this.passStates = [];
         this.Current_DB_ID = '';
+        this.ThisTime = '';
 
 
         this.onChange = this.onChange.bind(this);
@@ -37,8 +38,20 @@ class Navbar extends React.Component {
         this.Undo = this.Undo.bind(this);
         this.NewNight = this.NewNight.bind(this);
         this.PostWithID = this.PostWithID.bind(this);
+        this.CurrentTime = this.CurrentTime.bind(this)
     }
-    PostWithID(id,NewOrder) {
+    CurrentTime() {
+        var Time = new Date();
+        var Hours = Time.getHours();
+        let Minuts = Time.getMinutes();
+        if(Minuts.length === 1){
+            Minuts === '0'+Minuts;
+        }
+        let ThisTime = Hours +':'+ Minuts;
+        return ThisTime;
+    }
+
+    PostWithID(id, NewOrder) {
         axios.post(`http://localhost:3032/NewOrder/${id}`, {
             NewOrder
         })
@@ -56,7 +69,7 @@ class Navbar extends React.Component {
         })
             .then((response) => {
                 this.Current_DB_ID = response.data;
-                this.PostWithID(response.data , NewOrder)
+                this.PostWithID(response.data, NewOrder)
             })
             .catch(function (error) {
                 console.log(error);
@@ -119,14 +132,15 @@ class Navbar extends React.Component {
         console.log(event)
     }
     HandleSendClick() {
-        console.log(this.Current_DB_ID)
-        // console.log(this.state.ChefsBoard)
+        this.ThisTime=this.CurrentTime();
         let NewBoard = this.state.ChefsBoard;
         let NewOrder = {
+            Time:'',
             Allergy: '',
             TableNumber: '',
             FoodOrder: []
         };
+        NewOrder.Time = this.ThisTime;
         NewOrder.Allergy = this.state.Allergy;
         NewOrder.TableNumber = this.state.TableNumber;
         NewOrder.FoodOrder = this.state.ThisOrder;
@@ -148,7 +162,7 @@ class Navbar extends React.Component {
         if (this.Current_DB_ID === '') {
             this.NewNight(NewOrder);
         }
-
+        // let ThisTime = this.CurrentTime();
         this.passStates.push(_.cloneDeep(this.state))
         this.setState({
             ChefsBoard: NewBoard,
@@ -156,6 +170,7 @@ class Navbar extends React.Component {
             TableNumber: '',
             Allergy: '',
         })
+        this.ThisTime=''
     }
     onSpecialChange(event) {
         let ThisState = this.state;//.ThisOrder;
@@ -187,9 +202,9 @@ class Navbar extends React.Component {
     //     })
     // }
     HandleFoodClick(x) {
-        if(x==='Allergy'){
+        if (x === 'Allergy') {
             this.setState({
-                Allergy:' '
+                Allergy: ' '
             })
         }
         var OrderList = document.getElementById("OrderListID");

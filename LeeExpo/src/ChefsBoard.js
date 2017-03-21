@@ -243,7 +243,11 @@ class ChefsBoard extends Component {
             }
 
             NewChefsBoard.push(
-                <div className='col-md-1 SingleOrder flex-container' style={SingleOrderStyle}>
+                <div className='col-md-1 flex-container' >
+                    <div className='TimeDiv'> 
+                        {this.state.ChefsBoard[i].Time}
+                    </div>
+                    <div className='SingleOrder' style={SingleOrderStyle}>
                     <div className='TableNumberDiv'>
                         {this.state.ChefsBoard[i].TableNumber}
                     </div>
@@ -255,6 +259,7 @@ class ChefsBoard extends Component {
                     </div>
                     <div className='RemoveDiv flex-item'>
                         <button className='RemoveButton' onClick={() => { this.props.RemoveOrder(i) }}>X</button>
+                    </div>
                     </div>
                 </div>
             )

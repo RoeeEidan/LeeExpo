@@ -192,7 +192,12 @@ $LightGray:#F2F2F2;
         }
         .ChefsBoard{
           padding:30px;
+          .TimeDiv{
+              color:lightgrey;
+              text-align: center;
+            }
           .SingleOrder{
+            padding:0px;
             border-left: 2px solid $Gray;
             text-align: center;
             display: inline-block;
@@ -234,7 +239,7 @@ $LightGray:#F2F2F2;
                 margin:0;
               }
               .AllergyDiv{
-                min-height: 19.09px;
+                min-height: 23.64px;
                 color: white;
                 // background-color: $LightGray;
                 margin:#414566;
