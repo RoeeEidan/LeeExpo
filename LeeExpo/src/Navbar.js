@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 import { FoodMenu, MenuItem } from './FoodMenu';
 import _ from 'lodash';
 import axios from 'axios';
-
 // import $ from 'jquery';
 
 let BottomBorder = '3px solid #2d3047';
@@ -188,7 +187,13 @@ class Navbar extends React.Component {
     //     })
     // }
     HandleFoodClick(x) {
-        console.log('this is runing')
+        // if(x==='Allergy'){
+        //     setTimeout(()=>{
+        //         let input = $('.AllergyInput').children().children()[0];
+        //         console.log()
+        //     },1000)
+        // }
+        // console.log('this is runing')
         var OrderList = document.getElementById("OrderListID");
         if (OrderList.scrollHeight > 410) {
             OrderList.scrollTop = (OrderList.scrollHeight)
