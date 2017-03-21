@@ -43,8 +43,7 @@ class NewOrder extends React.Component {
                     />
                     {this.props.AllergyRender}
                 </div>
-                <ul className='orderlist' id='OrderListID' style={ulStyle}
-                >
+                <ul className='orderlist' id='OrderListID' style={ulStyle}>
                     {this.props.Order}
                 </ul>
 

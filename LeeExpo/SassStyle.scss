@@ -24,6 +24,8 @@ $LightGray:#F2F2F2;
       padding: 0;
       font-family: sans-serif;
       .NavBarDiv{
+          font-size: larger;
+          letter-spacing: 2px;
           background-color: $LightGray;
           height: 150px;
           padding: 0;
@@ -79,6 +81,12 @@ $LightGray:#F2F2F2;
             margin-left: 60px;
             max-width: 400px;
             padding-bottom: 25px;
+            h2{
+              letter-spacing: 1px;
+            }
+            #OrderLisrID{
+              letter-spacing: 1px;
+            }
             .Title{
               margin-bottom: 15px;
             }
@@ -118,7 +126,7 @@ $LightGray:#F2F2F2;
             .SendButton{
               margin:5px;
               width:80%;
-              background-color: $Blue;
+              background-color: #5D6291;
               color: white;
               border:$OrderListBorder;
             }
@@ -130,7 +138,8 @@ $LightGray:#F2F2F2;
             display: inline-block;
             overflow: hidden;
               .Undo{
-                background-color: $LightGray;
+                color:white;
+                background-color: #87829C;
                 width:97.4%;
                 height: 10%;
                 margin: 10px 0 0 0;

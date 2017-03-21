@@ -28,8 +28,8 @@ class App extends Component {
   render() {
     const AllergyRender = [];
     const ThisOrderArray = [];
-    if (this.state.ThisOrder.length !== 0) {
-      if (this.state.Allergy !== '') {
+    
+    if (this.state.Allergy !== '') {
         AllergyRender.push(<p className='Allergy'>
           Allergy
           <div className='AllergyInput'>
@@ -40,6 +40,7 @@ class App extends Component {
           </div>
         </p>)
       }
+    if (this.state.ThisOrder.length !== 0) {
       for (let i = 0; i < this.state.ThisOrder.length; i++) {//loops throu the order array
         if (this.state.ThisOrder[i] === 'Special') {
           ThisOrderArray.push(<p className='Special2'>

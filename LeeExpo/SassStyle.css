@@ -9,6 +9,8 @@
     padding: 0;
     font-family: sans-serif; }
     * body .NavBarDiv {
+      font-size: larger;
+      letter-spacing: 2px;
       background-color: #F2F2F2;
       height: 150px;
       padding: 0;
@@ -58,6 +60,10 @@
         margin-left: 60px;
         max-width: 400px;
         padding-bottom: 25px; }
+        * body .OrderPage .NewOrder h2 {
+          letter-spacing: 1px; }
+        * body .OrderPage .NewOrder #OrderLisrID {
+          letter-spacing: 1px; }
         * body .OrderPage .NewOrder .Title {
           margin-bottom: 15px; }
         * body .OrderPage .NewOrder .Allergy {
@@ -87,7 +93,7 @@
         * body .OrderPage .NewOrder .SendButton {
           margin: 5px;
           width: 80%;
-          background-color: #2d3047;
+          background-color: #5D6291;
           color: white;
           border: 2px solid #c4c4c4; }
       * body .OrderPage .ButtonsDiv {
@@ -97,7 +103,8 @@
         display: inline-block;
         overflow: hidden; }
         * body .OrderPage .ButtonsDiv .Undo {
-          background-color: #F2F2F2;
+          color: white;
+          background-color: #87829C;
           width: 97.4%;
           height: 10%;
           margin: 10px 0 0 0; }
