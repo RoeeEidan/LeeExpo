@@ -191,10 +191,11 @@ $LightGray:#F2F2F2;
           }
         }
         .ChefsBoard{
-          padding:30px;
+          padding: 0 30px;
           .OrderDiv{
             padding:0px;
           .TimeDiv{
+              padding-top: 30px;
               color:lightgrey;
               text-align: center;
             }

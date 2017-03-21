@@ -50,7 +50,7 @@ class FoodButton extends React.Component {
                 <div className='FoodButtonsDiv'>
                     {FoodButtonArray}
                     <button className='Undo' onClick={this.props.Undo}>
-                        Undo
+                        UNDO
                     </button>
                 </div>
             </div>

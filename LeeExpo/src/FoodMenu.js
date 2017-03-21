@@ -27,7 +27,7 @@ LeeMenu.newitem('Lettuce-Cups' , 34);
 LeeMenu.newitem('Fall-Salad', 40 );
 LeeMenu.newitem('Gratin', 47 );
 LeeMenu.newitem('Octopus', 53 );
-LeeMenu.newitem('Chung-Fun' ,59);
+LeeMenu.newitem('Cheung-Fun' ,59);
 LeeMenu.newitem('Ravioli', 63 );
 LeeMenu.newitem('Scallop', 68 );
 LeeMenu.newitem('Tuna-Tartar', 74 );

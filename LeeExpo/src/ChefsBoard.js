@@ -243,10 +243,10 @@ class ChefsBoard extends Component {
             }
 
             NewChefsBoard.push(
-                <div className='col-md-1 flex-container OrderDiv' >
+                <div className='col-md-1 flex-container OrderDiv' style={SingleOrderStyle}>
                     <div className='TimeDiv'> 
                         {this.state.ChefsBoard[i].Time}
-                    </div>
+                    </div >
                     <div className='SingleOrder' style={SingleOrderStyle}>
                     <div className='TableNumberDiv'>
                         {this.state.ChefsBoard[i].TableNumber}
