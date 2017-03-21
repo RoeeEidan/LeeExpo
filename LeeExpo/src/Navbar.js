@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { FoodMenu, MenuItem } from './FoodMenu';
 import _ from 'lodash';
 import axios from 'axios';
-// import $ from 'jquery';
+import $ from 'jquery';
 
 let BottomBorder = '3px solid #2d3047';
 let ChefsBoardStyle = {};
@@ -38,14 +38,30 @@ class Navbar extends React.Component {
         this.Undo = this.Undo.bind(this);
         this.NewNight = this.NewNight.bind(this);
         this.PostWithID = this.PostWithID.bind(this);
-        this.CurrentTime = this.CurrentTime.bind(this)
+        this.CurrentTime = this.CurrentTime.bind(this);
+        this.OpenInput=this.OpenInput.bind(this);
+        this.OpenSpecialInput=this.OpenSpecialInput.bind(this);
+    }
+    OpenSpecialInput(){
+        let MyInput = $('.Special2');
+        let MyInput2 = MyInput[MyInput.length-1]
+        console.log({MyInput2})
+        let MySpecialInput = MyInput2.childNodes[3].firstChild;
+        MySpecialInput.focus();
+    }
+    componentDidUpdate(){
+        if(this.state.Allergy===' '){
+            this.OpenInput()
+        }else if(this.state.ThisOrder[this.state.ThisOrder.length-1]==='Special' && this.state.ThisOrder[this.state.ThisOrder.length-2].special === ''){
+            this.OpenSpecialInput()
+        }
     }
     CurrentTime() {
         var Time = new Date();
         var Hours = Time.getHours();
-        let Minuts = Time.getMinutes();
+        let Minuts = Time.getMinutes().toString();
         if(Minuts.length === 1){
-            Minuts === '0'+Minuts;
+            Minuts = '0'+Minuts;
         }
         let ThisTime = Hours +':'+ Minuts;
         return ThisTime;
@@ -194,13 +210,11 @@ class Navbar extends React.Component {
             Allergy: event,
         })
     }
-    // OpenInput(){
-    //     $(document).ready(function() {
-    //         let myCheck = $("#myCheck");
-    //         console.log(myCheck)
-
-    //     })
-    // }
+    OpenInput(){
+            let MyInput = $('.AllergyInput').children().children()[0];
+            MyInput.focus();
+            // console.log(MyInput)
+    }
     HandleFoodClick(x) {
         if (x === 'Allergy') {
             this.setState({

@@ -43,21 +43,21 @@ class App extends Component {
     if (this.state.ThisOrder.length !== 0) {
       for (let i = 0; i < this.state.ThisOrder.length; i++) {//loops throu the order array
         if (this.state.ThisOrder[i] === 'Special') {
-          ThisOrderArray.push(<p className='Special2'>
+          ThisOrderArray.push(<div className='Special2'>
             {this.state.ThisOrder[i]}
             <Input
               value={this.props.value}
               onChange={this.props.onSpecialChange}
             />
-          </p>)
+          </div>)
         } else if (this.state.ThisOrder[i] === 'Same-Time') {
-          ThisOrderArray.push(<p className='Same-Time2'>{this.state.ThisOrder[i]}</p>)
+          ThisOrderArray.push(<div className='Same-Time2'>{this.state.ThisOrder[i]}</div>)
         }
         else {
           for (let w = 0; w < this.NumbersArray.length; w++) { // loops throu the time array
             if (this.NumbersArray[w] === this.state.ThisOrder[i]) {//checks if thers a match
               if (Number.isInteger(this.NumbersArray[w])) { //checks if its a number
-                ThisOrderArray.push(<p className='Number'>*** {this.state.ThisOrder[i]} ***</p>)
+                ThisOrderArray.push(<div className='Number'>*** {this.state.ThisOrder[i]} ***</div>)
               } else {//we are already after a match to time and special array so if thers no match with numbers so thers with special
                 // ThisOrderArray.push(<p>{this.state.ThisOrder[i]}</p>)
                 console.log('this shouldnt log')
@@ -66,7 +66,7 @@ class App extends Component {
           }
           for (let z = 0; z < FoodMenu.length; z++) {//loops thro the manu to check match
             if (this.state.ThisOrder[i].name === FoodMenu[z].name) {
-              ThisOrderArray.push(<p>{this.state.ThisOrder[i].name}</p>)
+              ThisOrderArray.push(<div>{this.state.ThisOrder[i].name}</div>)
             }
           }
         }

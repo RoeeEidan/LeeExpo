@@ -142,48 +142,50 @@
             margin: 10px 8px; }
     * body .ChefsBoard {
       padding: 30px; }
-      * body .ChefsBoard .TimeDiv {
-        color: lightgrey;
-        text-align: center; }
-      * body .ChefsBoard .SingleOrder {
-        padding: 0px;
-        border-left: 2px solid #c4c4c4;
-        text-align: center;
-        display: inline-block;
-        padding: 5px;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: column;
-        flex-direction: column; }
-        * body .ChefsBoard .SingleOrder .SingleFoodOrder {
-          font-size: 15px;
-          flex-grow: 1; }
-        * body .ChefsBoard .SingleOrder .RemoveDiv {
-          display: block;
-          margin: auto; }
-          * body .ChefsBoard .SingleOrder .RemoveDiv .RemoveButton {
-            background-color: #F2F2F2;
-            color: #c4c4c4;
-            width: 35px;
-            margin: auto;
-            margin-top: 8px;
-            border: 1px solid #c4c4c4;
-            border-radius: 50%;
-            font-size: 22px;
-            padding-top: 4px; }
-        * body .ChefsBoard .SingleOrder .SpecialInstructions {
-          color: #00A856; }
-        * body .ChefsBoard .SingleOrder .BoardNumber {
-          color: #c4c4c4; }
-        * body .ChefsBoard .SingleOrder .SingleDish {
-          margin: 2px 0 2px; }
-        * body .ChefsBoard .SingleOrder .TableNumberDiv {
-          font-size: 40px;
-          margin: 0; }
-        * body .ChefsBoard .SingleOrder .AllergyDiv {
-          min-height: 23.64px;
-          color: white;
-          margin: #414566; }
+      * body .ChefsBoard .OrderDiv {
+        padding: 0px; }
+        * body .ChefsBoard .OrderDiv .TimeDiv {
+          color: lightgrey;
+          text-align: center; }
+        * body .ChefsBoard .OrderDiv .SingleOrder {
+          padding: 0px;
+          border-left: 2px solid #c4c4c4;
+          text-align: center;
+          display: inline-block;
+          padding: 5px;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: column;
+          flex-direction: column; }
+          * body .ChefsBoard .OrderDiv .SingleOrder .SingleFoodOrder {
+            font-size: 15px;
+            flex-grow: 1; }
+          * body .ChefsBoard .OrderDiv .SingleOrder .RemoveDiv {
+            display: block;
+            margin: auto; }
+            * body .ChefsBoard .OrderDiv .SingleOrder .RemoveDiv .RemoveButton {
+              background-color: #F2F2F2;
+              color: #c4c4c4;
+              width: 35px;
+              margin: auto;
+              margin-top: 8px;
+              border: 1px solid #c4c4c4;
+              border-radius: 50%;
+              font-size: 22px;
+              padding-top: 4px; }
+          * body .ChefsBoard .OrderDiv .SingleOrder .SpecialInstructions {
+            color: #00A856; }
+          * body .ChefsBoard .OrderDiv .SingleOrder .BoardNumber {
+            color: #c4c4c4; }
+          * body .ChefsBoard .OrderDiv .SingleOrder .SingleDish {
+            margin: 2px 0 2px; }
+          * body .ChefsBoard .OrderDiv .SingleOrder .TableNumberDiv {
+            font-size: 40px;
+            margin: 0; }
+          * body .ChefsBoard .OrderDiv .SingleOrder .AllergyDiv {
+            min-height: 23.64px;
+            color: white;
+            margin: #414566; }
 
 .keyboard .keyboard-wrapper {
   display: inherit; }
