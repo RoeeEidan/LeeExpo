@@ -14,7 +14,7 @@ class App extends Component {
       Allergy: this.props.Allergy,
       TableNumber: this.props.TableNumber
     }
-    this.NumbersArray=[ 10, 15, 20, 30, 45];
+    this.NumbersArray = [10, 15, 20, 30, 45];
   }
   componentWillReceiveProps(nextProps) {
     this.setState({
@@ -29,18 +29,19 @@ class App extends Component {
     const AllergyRender = [];
     const ThisOrderArray = [];
     if (this.state.ThisOrder.length !== 0) {
-      for (let i = 0; i < this.state.ThisOrder.length; i++) {//loops throu the order array
-        if (this.state.ThisOrder[i] === 'Allergy') {
-          AllergyRender.push(<p className='Allergy'>
-            {this.state.ThisOrder[i]}
-            <div className='AllergyInput'>
+      if (this.state.Allergy !== '') {
+        AllergyRender.push(<p className='Allergy'>
+          Allergy
+          <div className='AllergyInput'>
             <Input
               value={this.props.value}
               onChange={this.props.onAllergyChange}
             />
-            </div>
-          </p>)
-        } else if (this.state.ThisOrder[i] === 'Special') {
+          </div>
+        </p>)
+      }
+      for (let i = 0; i < this.state.ThisOrder.length; i++) {//loops throu the order array
+        if (this.state.ThisOrder[i] === 'Special') {
           ThisOrderArray.push(<p className='Special2'>
             {this.state.ThisOrder[i]}
             <Input
@@ -82,10 +83,10 @@ class App extends Component {
           onAllergyChange={this.props.onAllergyChange}
           HandleSendClick={this.props.HandleSendClick}
         />
-        <FoodButton 
-        FoodClick={this.props.HandleFoodClick}
-        Undo={this.props.Undo}
-        NewNight={this.props.NewNight}
+        <FoodButton
+          FoodClick={this.props.HandleFoodClick}
+          Undo={this.props.Undo}
+          NewNight={this.props.NewNight}
         />
       </div>
     )

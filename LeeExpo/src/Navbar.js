@@ -9,7 +9,7 @@ let BottomBorder = '3px solid #2d3047';
 let ChefsBoardStyle = {};
 let NewOrderStyle = { borderBottom: BottomBorder };
 
-const SpecialArray = ['Allergy', 'Special', 10, 15, 20, 30, 45];
+const SpecialArray = ['Special', 10, 15, 20, 30, 45];
 
 class Navbar extends React.Component {
     constructor(props) {
@@ -187,13 +187,11 @@ class Navbar extends React.Component {
     //     })
     // }
     HandleFoodClick(x) {
-        // if(x==='Allergy'){
-        //     setTimeout(()=>{
-        //         let input = $('.AllergyInput').children().children()[0];
-        //         console.log()
-        //     },1000)
-        // }
-        // console.log('this is runing')
+        if(x==='Allergy'){
+            this.setState({
+                Allergy:' '
+            })
+        }
         var OrderList = document.getElementById("OrderListID");
         if (OrderList.scrollHeight > 410) {
             OrderList.scrollTop = (OrderList.scrollHeight)
