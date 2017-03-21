@@ -100,7 +100,7 @@
           background-color: #F2F2F2;
           width: 97.4%;
           height: 10%;
-          margin-top: 10px; }
+          margin: 10px 0 0 0; }
         * body .OrderPage .ButtonsDiv .SpecialButtonsDiv {
           height: 9%; }
           * body .OrderPage .ButtonsDiv .SpecialButtonsDiv .Allergy {

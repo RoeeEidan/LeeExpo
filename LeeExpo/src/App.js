@@ -87,6 +87,7 @@ class App extends Component {
         <FoodButton 
         FoodClick={this.props.HandleFoodClick}
         Undo={this.props.Undo}
+        NewNight={this.props.NewNight}
         />
       </div>
     )

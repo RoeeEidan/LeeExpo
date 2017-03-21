@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import { FoodMenu, MenuItem } from './FoodMenu';
 import _ from 'lodash';
+import axios from 'axios';
+
 // import $ from 'jquery';
 
 let BottomBorder = '3px solid #2d3047';
@@ -11,9 +13,10 @@ let NewOrderStyle = { borderBottom: BottomBorder };
 const SpecialArray = ['Allergy', 'Special', 10, 15, 20, 30, 45];
 
 class Navbar extends React.Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
+
             Display: 'inherit',
             ChefsBoard: [],
             ThisOrder: [],
@@ -21,6 +24,7 @@ class Navbar extends React.Component {
             TableNumber: ''
         }
         this.passStates = [];
+        this.Current_DB_ID = '';
 
 
         this.onChange = this.onChange.bind(this);
@@ -32,10 +36,36 @@ class Navbar extends React.Component {
         this.onOrderClick = this.onOrderClick.bind(this);
         this.RemoveOrder = this.RemoveOrder.bind(this);
         this.Undo = this.Undo.bind(this);
+        this.NewNight = this.NewNight.bind(this);
+        this.PostWithID = this.PostWithID.bind(this);
+    }
+    PostWithID(id,NewOrder) {
+        axios.post(`http://localhost:3032/NewOrder/${id}`, {
+            NewOrder
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    NewNight(NewOrder) {
+        axios.post('http://localhost:3032/NewService', {
+
+        })
+            .then((response) => {
+                this.Current_DB_ID = response.data;
+                this.PostWithID(response.data , NewOrder)
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
     Undo() {
         if (this.state.ThisOrder[this.state.ThisOrder.length - 1] === 'Allergy' && this.state.Allergy !== '') {
-           if (this.passStates.length > 0) {
+            if (this.passStates.length > 0) {
                 console.log(this.passStates)
                 let MyState = this.passStates[this.passStates.length - 1];
                 this.setState({
@@ -47,7 +77,7 @@ class Navbar extends React.Component {
                 })
                 this.passStates.pop();
             } else { console.log('nothing has been done yet') }
-                this.Undo()
+            this.Undo()
         } else {
             if (this.passStates.length > 0) {
                 console.log(this.passStates)
@@ -90,7 +120,8 @@ class Navbar extends React.Component {
         console.log(event)
     }
     HandleSendClick() {
-        console.log(this.state.ChefsBoard)
+        console.log(this.Current_DB_ID)
+        // console.log(this.state.ChefsBoard)
         let NewBoard = this.state.ChefsBoard;
         let NewOrder = {
             Allergy: '',
@@ -101,8 +132,24 @@ class Navbar extends React.Component {
         NewOrder.TableNumber = this.state.TableNumber;
         NewOrder.FoodOrder = this.state.ThisOrder;
         NewBoard.push(NewOrder);
-        console.log(NewBoard)
-        
+
+        if (this.Current_DB_ID !== '') {
+            axios.post(`http://localhost:3032/NewOrder/${this.Current_DB_ID}`, {
+                NewOrder
+            })
+                .then(function (response) {
+                    // console.log(this.state)
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+
+        if (this.Current_DB_ID === '') {
+            this.NewNight(NewOrder);
+        }
+
         this.passStates.push(_.cloneDeep(this.state))
         this.setState({
             ChefsBoard: NewBoard,
@@ -113,13 +160,13 @@ class Navbar extends React.Component {
     }
     onSpecialChange(event) {
         let ThisState = this.state;//.ThisOrder;
-        if (ThisState.ThisOrder !== [] && typeof ThisState.ThisOrder[ThisState.ThisOrder.length-2] === 'object' ) {
+        if (ThisState.ThisOrder !== [] && typeof ThisState.ThisOrder[ThisState.ThisOrder.length - 2] === 'object') {
             ThisState.ThisOrder[ThisState.ThisOrder.length - 2].special = event;
             this.passStates.push(_.cloneDeep(this.state))
             this.setState({
                 ThisOrder: ThisState.ThisOrder,
             })
-        }else(console.log('ERROR'))
+        } else (console.log('ERROR'))
     }
     onTableNumberChange(event) {
         this.passStates.push(_.cloneDeep(this.state))
@@ -199,7 +246,8 @@ class Navbar extends React.Component {
                     HandleFoodClick: this.HandleFoodClick,
                     onSpecialChange: this.onSpecialChange,
                     RemoveOrder: this.RemoveOrder,
-                    Undo: this.Undo
+                    Undo: this.Undo,
+                    NewNight: this.NewNight
 
                 })}
             </div>
