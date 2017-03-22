@@ -7,7 +7,7 @@ var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost/data/db/');
+mongoose.connect('mongodb://roeeeidan:853491@ds137360.mlab.com:37360/leehistory');
 
 
 //    URL STUff
