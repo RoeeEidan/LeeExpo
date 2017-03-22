@@ -179,12 +179,12 @@ class ChefsBoard extends Component {
     render() {
         let NewChefsBoard = [];
         for (let i = 0; i < this.state.ChefsBoard.length; i++) { //buildes the display for each table
-            let specialBorderBottom = '';
             let NewFoodOrder = [];
             for (let x = 0; x < this.state.ChefsBoard[i].FoodOrder.length; x++) { // Loops throu each order
                 if (typeof this.state.ChefsBoard[i].FoodOrder[x] === 'object') {
 
                     // STYLEING STUFF
+                    let Opacity = '';
                     let DishColor = 'blue';
                     let BorderTop = '';
                     let BorderBottom = ''
@@ -199,7 +199,8 @@ class ChefsBoard extends Component {
                         BorderBottom = '2px solid #2d3047'
                     }
                     if (this.state.ChefsBoard[i].FoodOrder[x].state === 0) { //when the dish is just waiting
-                        DishColor = '#c4c4c4'
+                        DishColor = 'black'
+                        Opacity ='0.5'
                     }
                     if (this.state.ChefsBoard[i].FoodOrder[x].state === 1) { //when the dish neeeds to cock
                         DishColor = '#FF1469'
@@ -208,17 +209,20 @@ class ChefsBoard extends Component {
                         DishColor = 'black'
                     }
                     if (this.state.ChefsBoard[i].FoodOrder[x].state === 3) {//when a dish is ready to pickup
-                        DishColor = '#20BFFF'
+                        DishColor = '#5C6CF3'
                     }
                     if (this.state.ChefsBoard[i].FoodOrder[x].state === 4) {//when a dish got sent
-                        DishColor = '#9BB7BF'
+                        DishColor = 'black'
+                        Opacity = '0.2'
                     }
                     NewFoodOrder.push(<div style={{
                         color: DishColor,
                         borderTop: BorderTop,
-                        borderBottom: BorderBottom
+                        borderBottom: BorderBottom,
+                        opacity: Opacity
                     }} onClick={() => { this.SingleDishOnClick({ ChefsBoardIndex: i, FoodOrderIndex: x }) }} className='SingleDish' > {this.state.ChefsBoard[i].FoodOrder[x].name}</div>)
                     if (this.state.ChefsBoard[i].FoodOrder[x].special !== '') {
+                        let specialBorderBottom = '';
                         let Green = '#D1DBBD'
                         if (this.state.ChefsBoard[i].FoodOrder[x].state === 3 || this.state.ChefsBoard[i].FoodOrder[x].state === 1) {
                             Green = '#0BAE45'
@@ -237,9 +241,9 @@ class ChefsBoard extends Component {
             let SingleOrderStyle = { height: (this.state.MaxHeight - 1), display: this.state.ChefsBoard[i].Display };
             let AllergyDivStyle;
             if (this.state.ChefsBoard[i].Allergy !== '') {
-                AllergyDivStyle = { backgroundColor: '#c4c4c4' }
+                AllergyDivStyle = { backgroundColor: 'black', opacity:'0.3' }
             } else if (this.state.ChefsBoard[i].Allergy === '') {
-                AllergyDivStyle = { backgroundColor: '#F2F2F2' }
+                AllergyDivStyle = { backgroundColor: 'black', opacity:'0.1' }
             }
 
             NewChefsBoard.push(

@@ -30,21 +30,28 @@ class NewOrder extends React.Component {
     }
 
     render() {
-        let SendButtonStyle = {transition:0}
-        let ulStyle = { height: this.state.ulHeight }
+        let TableNumberInputStyle = { width: '40%', display: 'inlineBlock' };
+        let SendButtonStyle = { transition: 0 };
+        let ulStyle = { height: this.state.ulHeight };
         const title = 'Table Number';
         return (
             <div className='col-md-3 NewOrder'>
                 <div className='Title' id='myCheck'>
-                    <h2 >{title}</h2>
-                    <Input
-                        value={this.props.TableNumber}
-                        onChange={this.props.onTableNumberChange}
-                    />
-                    {this.props.AllergyRender}
+                    <div className='TableNumDiv row'>
+                        <img className='LeeLogo col-md-1' src="./LeeLogo.gif" height='100' width='100' />
+                        <div style={TableNumberInputStyle} className='col-md-3'>
+                            <h2 >{title}</h2>
+                            <Input
+                                value={this.props.TableNumber}
+                                onChange={this.props.onTableNumberChange}
+                            />
+                            {this.props.AllergyRender}
+                        </div>
+                    </div>
                 </div>
                 <ul className='orderlist' id='OrderListID' style={ulStyle}>
                     {this.props.Order}
+                    <img className='SusurLogo' src="./SusurLogo.png" alt='SusurLogo'/>
                 </ul>
 
                 <button

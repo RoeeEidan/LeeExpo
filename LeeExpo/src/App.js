@@ -30,7 +30,7 @@ class App extends Component {
     const ThisOrderArray = [];
     
     if (this.state.Allergy !== '') {
-        AllergyRender.push(<p className='Allergy'>
+        AllergyRender.push(<div className='Allergy'>
           Allergy
           <div className='AllergyInput'>
             <Input
@@ -38,7 +38,7 @@ class App extends Component {
               onChange={this.props.onAllergyChange}
             />
           </div>
-        </p>)
+        </div>)
       }
     if (this.state.ThisOrder.length !== 0) {
       for (let i = 0; i < this.state.ThisOrder.length; i++) {//loops throu the order array
