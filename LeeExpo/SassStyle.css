@@ -42,6 +42,7 @@
           width: 49%;
           margin: auto; }
     * body .OrderPage {
+      padding-top: 25px;
       text-align: center;
       height: 1300px;
       background-color: #F2F2F2;
@@ -79,7 +80,7 @@
           margin-bottom: 15px; }
         * body .OrderPage .NewOrder .Allergy {
           font-size: 25px;
-          color: #f51201; }
+          color: #C40D01; }
           * body .OrderPage .NewOrder .Allergy .keyboard {
             color: black; }
           * body .OrderPage .NewOrder .Allergy input {
@@ -135,12 +136,11 @@
         * body .OrderPage .ButtonsDiv .SpecialButtonsDiv {
           height: 9%; }
           * body .OrderPage .ButtonsDiv .SpecialButtonsDiv .Allergy {
-            background-color: #f51201;
-            opacity: 50%; }
+            background-color: #C40D01; }
           * body .OrderPage .ButtonsDiv .SpecialButtonsDiv .Special {
-            background-color: #FF7167; }
+            background-color: #CC524A; }
           * body .OrderPage .ButtonsDiv .SpecialButtonsDiv .Same-Time {
-            background-color: #F59D96; }
+            background-color: #D68983; }
           * body .OrderPage .ButtonsDiv .SpecialButtonsDiv .SingleSpecialButton {
             border: 0px;
             box-shadow: 0 0 3px #888888;

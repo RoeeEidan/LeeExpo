@@ -5,7 +5,7 @@ import _ from 'lodash';
 import axios from 'axios';
 import $ from 'jquery';
 
-let BottomBorder = '3px solid #FF5447';
+let BottomBorder = '3px solid #A32C23';
 let ChefsBoardStyle = {};
 let NewOrderStyle = { borderBottom: BottomBorder };
 

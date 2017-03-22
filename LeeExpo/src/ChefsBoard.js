@@ -208,8 +208,7 @@ class ChefsBoard extends Component {
                         BorderBottom = '2px solid #2d3047'
                     }
                     if (CleanChefsBoard[i].FoodOrder[x].state === 0) { //when the dish is just waiting
-                        DishColor = 'black'
-                        Opacity = '0.5'
+                        DishColor = '#85858A'
                     }
                     if (CleanChefsBoard[i].FoodOrder[x].state === 1) { //when the dish neeeds to cock
                         DishColor = '#FF1469'
@@ -221,8 +220,7 @@ class ChefsBoard extends Component {
                         DishColor = '#5C6CF3'
                     }
                     if (CleanChefsBoard[i].FoodOrder[x].state === 4) {//when a dish got sent
-                        DishColor = 'black'
-                        Opacity = '0.2'
+                        DishColor = '#DBDBE3'
                     }
                     NewFoodOrder.push(<div style={{
                         color: DishColor,

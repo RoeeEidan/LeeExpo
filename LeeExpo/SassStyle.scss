@@ -65,6 +65,7 @@ $NavBarBackGround: #222222;
             }
         }
         .OrderPage{
+          padding-top: 25px;
           text-align: center;
           height: 1300px;
           background-color: $backgroundColor;
@@ -108,7 +109,7 @@ $NavBarBackGround: #222222;
             }
             .Allergy{
               font-size: 25px;
-              color: #f51201;
+              color: #C40D01;
               .keyboard{
                 color: black;
               }
@@ -177,14 +178,14 @@ $NavBarBackGround: #222222;
               .SpecialButtonsDiv{
                 height:9%;
                 .Allergy{
-                  background-color:#f51201;
-                  opacity: 50%;
+                  background-color:#C40D01;
+                  // opacity: 50%;
                 }
                 .Special{
-                  background-color: #FF7167;
+                  background-color: #CC524A;
                 }
                 .Same-Time{
-                  background-color: #F59D96;
+                  background-color: #D68983;
                 }
                 .SingleSpecialButton{
                   border: 0px;
