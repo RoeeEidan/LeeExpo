@@ -5,17 +5,19 @@ $LighterBlue:#6D73AB;
 $Blue:#2d3047;
 $Purple:#c0b9dd;
 $Pink:#D81159;
-$LighterPink:#FF6382;
+$LighterPink:#FF6382; 
 $Gray:#c4c4c4;
 $OrderListBorder: 2px solid $Gray;
 $NumberColor:#42B3BA;
 $Green:#00A856;
 $LightGray:#F2F2F2;
+$SubmitButtonBackGround:#A32C23;
+$NavBarBackGround: #222222;
 
 *{
   -webkit-transition-timing-function: ease;
   transition: 0.5s;
-  background-color: $backgroundColor;
+  // background-color: $backgroundColor;
   input{
     text-align: center;
   }
@@ -26,7 +28,7 @@ $LightGray:#F2F2F2;
       .NavBarDiv{
           font-size: larger;
           letter-spacing: 2px;
-          background-color: #222222;
+          background-color: $NavBarBackGround;
           height: 150px;
           padding: 0;
           height: 100%;
@@ -37,14 +39,14 @@ $LightGray:#F2F2F2;
               height: 43px;
               color: white;
               text-align: center;
-              background-color:#222222;
+              background-color:$NavBarBackGround;
               padding-top: 9px;
               display: inline-block;
               border-right: 2px solid #c4c4c4;
                 .NavBarOrderButton{
                   width: 49%;
                   margin: auto;
-                  background-color: #222222;
+                  background-color: $NavBarBackGround;
                 }
             }
             .NavBarRightButton{
@@ -52,11 +54,11 @@ $LightGray:#F2F2F2;
               height: 43px;
               color: white;
               text-align: center;
-              background-color:#222222;
+              background-color:$NavBarBackGround;
               padding-top: 9px;
               display: inline-block;
               .NavBarBoardButton{
-                background-color:#222222;
+                background-color:$NavBarBackGround;
                 width: 49%;
                 margin: auto;
               }
@@ -236,8 +238,37 @@ $LightGray:#F2F2F2;
               }
           }
         }
+        
         .ChefsBoard{
           padding: 0 30px;
+          width: 102%;
+          min-height: 705px;
+          background-color: $backgroundColor;
+          background-image:url("./public/LeeBackground.svg");
+          background-repeat: no-repeat;
+          background-position: 50% 0;
+          -ms-background-size: 87%;
+          // background-size: cover;
+          -moz-background-size: 87%;
+          -webkit-background-size: 87%;
+          background-size: 75%;
+          
+          // .ChefsBoardLEE{
+          //   // background-image:url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='50px' width='120px'><text x='0' y='15' fill='#D6D2D0' font-size='160'>LEE</text></svg>");
+          //   border: 15px solid #D6D2D0;
+          //   border-radius: 50%;
+          //   height: 600px;
+          //   width: 600px;
+          //   padding: 200px 200px;
+          //   padding-left: 140px;
+          //   padding-top: 157px;
+          //   font-size: 160px;
+          //   color: #D6D2D0;
+          //   position: absolute;
+          //   top: 111px;
+          //   left: 345px;
+          //   z-index: -100;
+          // }
           .OrderDiv{
             padding:0px;
           .TimeDiv{
@@ -257,7 +288,7 @@ $LightGray:#F2F2F2;
             flex-direction: column;
               .SingleFoodOrder{
                 font-size: 15px;
-                flex-grow: 1;
+                // flex-grow: 1;
               }
               .RemoveDiv{
                 display: block;
@@ -308,7 +339,7 @@ $LightGray:#F2F2F2;
   }
 }
 .keyboard-submit-button{
-  background-color:#A32C23;
+  background-color:$SubmitButtonBackGround;
 }
 
 #sendbutton{
