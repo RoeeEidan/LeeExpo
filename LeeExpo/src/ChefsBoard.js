@@ -55,7 +55,7 @@ class ChefsBoard extends Component {
                                     ChefsBoard: Board
                                 })
                             }
-                        }, (TrackObject.LongCurrentTime - ThisFoodOrder[x].time) * 1000)
+                        }, (TrackObject.LongCurrentTime - ThisFoodOrder[x].time) * 2000)
                     }
                 } else {
                     if (TrackObject.LongCurrentTime < ThisFoodOrder[g].time) {
@@ -77,7 +77,7 @@ class ChefsBoard extends Component {
                                     ChefsBoard: Board
                                 })
                             }
-                        }, T * 1000)
+                        }, T * 2000)
                     } else {
                         let Time = (TrackObject.TotaleTime) + (TrackObject.OldTime) - (ThisFoodOrder[g].time);
                         let MyIndex = ChefsBoardIndex;
@@ -91,7 +91,7 @@ class ChefsBoard extends Component {
                             this.setState({
                                 ChefsBoard: Board
                             })
-                        }, Time * 1000, w, MyIndex)
+                        }, Time * 2000, w, MyIndex)
                     }
                 }
             } else if (typeof ThisFoodOrder[g] === 'number') {
@@ -123,7 +123,7 @@ class ChefsBoard extends Component {
                 this.setState({
                     ChefsBoard: VeryNewChefsBoard
                 })
-            }, ThisTime * 1000);
+            }, ThisTime * 2000);
         } else if (this.state.ChefsBoard[IndexObject.ChefsBoardIndex].FoodOrder[IndexObject.FoodOrderIndex].state === 3) {
             let NewChefsBoard = this.state.ChefsBoard;
             NewChefsBoard[IndexObject.ChefsBoardIndex].FoodOrder[IndexObject.FoodOrderIndex].state++;
@@ -138,6 +138,7 @@ class ChefsBoard extends Component {
                 ChefsBoard: NewChefsBoard
             })
         }
+        else{console.log('its not time to click on it')}
     }
 
     componentWillReceiveProps(nextProps) {
