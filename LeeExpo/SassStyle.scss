@@ -65,18 +65,14 @@ $NavBarBackGround: #222222;
             }
         }
         .OrderPage{
-          // -webkit-transition-timing-function: ease;
-          // transition: 0.5s;
           text-align: center;
           height: 1300px;
           background-color: $backgroundColor;
           height: 100%;
-          // input{
-          //   background-color:  $backgroundColor;
-          // }
+          input{
+            background-color:  $backgroundColor;
+          }
           .NewOrder{
-            // -webkit-transition-timing-function: ease;
-            // transition: 0.5s;
             text-align: center;
             box-shadow: 0px 0px 25px #888888;
             height:660px;
@@ -98,8 +94,6 @@ $NavBarBackGround: #222222;
             .TableNumberDiv {
               -webkit-transition-timing-function: ease;
               transition: 5s;
-              // background-color: white
-            //  padding-top: 5px;
             }
             h2{
               letter-spacing: 0.5px;
@@ -107,11 +101,7 @@ $NavBarBackGround: #222222;
               font-size: 26px;
             }
             #OrderLisrID{
-              // -webkit-transition-timing-function: ease;
-              // transition: 5s;
               letter-spacing: 1px;
-              // background-color: blue;
-              // background-image: url('./public/SusurLogo.png')
             }
             .Title{
               margin-bottom: 15px;
@@ -228,6 +218,9 @@ $NavBarBackGround: #222222;
                 .Gray{
                   background-color: #A1A1A1;
                 }
+                .Vegeterian{
+                  background-color: $LightGray;
+                }
                 .SingleFoodButton{
                   box-shadow: 0px 0px 10px #888888;
                   border: 0px solid $LightGray;
@@ -238,8 +231,7 @@ $NavBarBackGround: #222222;
               }
           }
         }
-        
-        .ChefsBoard{
+        .BigChefsBoard{
           padding: 0 30px;
           width: 102%;
           min-height: 705px;
@@ -252,83 +244,71 @@ $NavBarBackGround: #222222;
           -moz-background-size: 87%;
           -webkit-background-size: 87%;
           background-size: 75%;
-          
-          // .ChefsBoardLEE{
-          //   // background-image:url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='50px' width='120px'><text x='0' y='15' fill='#D6D2D0' font-size='160'>LEE</text></svg>");
-          //   border: 15px solid #D6D2D0;
-          //   border-radius: 50%;
-          //   height: 600px;
-          //   width: 600px;
-          //   padding: 200px 200px;
-          //   padding-left: 140px;
-          //   padding-top: 157px;
-          //   font-size: 160px;
-          //   color: #D6D2D0;
-          //   position: absolute;
-          //   top: 111px;
-          //   left: 345px;
-          //   z-index: -100;
-          // }
-          .OrderDiv{
-            padding:0px;
-          .TimeDiv{
-              padding-top: 30px;
-              color:lightgrey;
-              text-align: center;
-            }
-          .SingleOrder{
-            padding:0px;
-            border-left: 2px solid $Gray;
-            text-align: center;
-            display: inline-block;
-            padding: 5px;
+        }
+          .ChefsBoard{
+            padding: 30px 0;
             display: -webkit-flex;
-            display: flex;
-            -webkit-flex-direction: column;
-            flex-direction: column;
-              .SingleFoodOrder{
-                font-size: 15px;
-                // flex-grow: 1;
+            display: flex;      
+            .OrderDiv{
+              display: flex;
+              -webkit-flex-direction: column;
+              flex-direction: column;
+              display: -webkit-flex;
+              padding:0px;
+            .TimeDiv{
+                color:lightgrey;
+                text-align: center;
               }
-              .RemoveDiv{
-                display: block;
-                margin: auto;
-                .RemoveButton{
-                  background-color: $LightGray;
-                  color: $Gray;
-                  width: 35px;
-                  margin: auto;
-                  margin-top: 8px;
-                  border: 1px solid $Gray;
-                  border-radius: 50%;
-                  font-size: 22px;
-                  padding-top: 4px;
+            .SingleOrder{
+              flex-grow: 1;
+              display: flex;
+              display: -webkit-flex;
+              -webkit-flex-direction: column;
+              flex-direction: column;
+              padding:0px;
+              border-left: 2px solid $Gray;
+              text-align: center;
+              padding: 5px;
+                .SingleFoodOrder{
+                  flex-grow: 1;
+                  font-size: 15px;
                 }
-              }
-              .SpecialInstructions{
-                color:$Green;
-              }
-              .BoardNumber{
-                color:$Gray;
-              }
-              .SingleDish{
-                margin:$MarginBtweenDishs;
-              }
-              .TableNumberDiv{
-                // -webkit-transition-timing-function: ease;
-                // transition: 5s;
-                font-size: 40px;
-                margin:0;
-              }
-              .AllergyDiv{
-                min-height: 23.64px;
-                color:white;
-                // background-color: $LightGray;
-                margin:#414566;
-              }
+                .RemoveDiv{
+                  display: block;
+                  margin: auto;
+                  .RemoveButton{
+                    background-color: $LightGray;
+                    color: $Gray;
+                    width: 35px;
+                    margin: auto;
+                    margin-top: 8px;
+                    border: 1px solid $Gray;
+                    border-radius: 50%;
+                    font-size: 22px;
+                    padding-top: 4px;
+                  }
+                }
+                .SpecialInstructions{
+                  color:$Green;
+                }
+                .BoardNumber{
+                  color:$Gray;
+                }
+                .SingleDish{
+                  margin:$MarginBtweenDishs;
+                }
+                .TableNumberDiv{
+                  font-size: 40px;
+                  margin:0;
+                }
+                .AllergyDiv{
+                  min-height: 23.64px;
+                  color:white;
+                  margin:#414566;
+                }
+            }
           }
-        }
-        }
+          }
 
     }
 }

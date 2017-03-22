@@ -17,7 +17,7 @@ class FoodButton extends React.Component {
         }
         for (let i = 0; i < Time.length; i++) {
             TimeButtonArray.push(
-                <button onClick={() => { this.props.FoodClick(Time[i]) }} className='SingleTimeButton'>{Time[i]}</button>
+                <button onClick={() => { this.props.FoodClick(Time[i]) }} className='SingleTimeButton '>{Time[i]}</button>
             )
         }
 
@@ -32,7 +32,7 @@ class FoodButton extends React.Component {
                 )
             }else{
                 FoodButtonArray.push(
-                    <button onClick={() => { this.props.FoodClick(FoodMenu[i].name) }} className='SingleFoodButton'>{FoodMenu[i].name}</button>
+                    <button onClick={() => { this.props.FoodClick(FoodMenu[i].name) }} className='SingleFoodButton Vegeterian'>{FoodMenu[i].name}</button>
                 )
             }
         }

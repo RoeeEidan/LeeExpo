@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 
 class ChefsBoard extends Component {
     constructor(props) {
@@ -10,16 +11,16 @@ class ChefsBoard extends Component {
         }
         this.SingleDishOnClick = this.SingleDishOnClick.bind(this);
         this.HandleCock = this.HandleCock.bind(this);
-        this.HeightFunc = this.HeightFunc.bind(this);
+        // this.HeightFunc = this.HeightFunc.bind(this);
     }
 
-    HeightFunc() {
-        let htmlBoard = document.getElementById("ChefsBoard")//.childNodes
-        let MaxHeight = htmlBoard.offsetHeight
-        this.setState({
-            MaxHeight: MaxHeight
-        })
-    }
+    // HeightFunc() {
+    //     let htmlBoard = document.getElementById("ChefsBoard")//.childNodes
+    //     let MaxHeight = htmlBoard.offsetHeight
+    //     this.setState({
+    //         MaxHeight: MaxHeight
+    //     })
+    // }
 
     HandleCock(ChefsBoardIndex) {
         let ThisFoodOrder = this.state.ChefsBoard[ChefsBoardIndex].FoodOrder;
@@ -48,10 +49,12 @@ class ChefsBoard extends Component {
                         let w = x;
                         setTimeout(() => {
                             let Board = this.state.ChefsBoard;
-                            Board[MyIndex].FoodOrder[w].state = 1
-                            this.setState({
-                                ChefsBoard: Board
-                            })
+                            if (typeof Board[MyIndex].FoodOrder[w] === 'object') {
+                                Board[MyIndex].FoodOrder[w].state = 1
+                                this.setState({
+                                    ChefsBoard: Board
+                                })
+                            }
                         }, (TrackObject.LongCurrentTime - ThisFoodOrder[x].time) * 1000)
                     }
                 } else {
@@ -68,10 +71,12 @@ class ChefsBoard extends Component {
                         let T = Board[ChefsBoardIndex].FoodOrder[g].time;
                         setTimeout(() => {
                             let VeryNewBoard = this.state.ChefsBoard;
-                            VeryNewBoard[I].FoodOrder[g].state = 3;
-                            this.setState({
-                                ChefsBoard: Board
-                            })
+                            if (typeof VeryNewBoard[I].FoodOrder[g] === 'object') {
+                                VeryNewBoard[I].FoodOrder[g].state = 3;
+                                this.setState({
+                                    ChefsBoard: Board
+                                })
+                            }
                         }, T * 1000)
                     } else {
                         let Time = (TrackObject.TotaleTime) + (TrackObject.OldTime) - (ThisFoodOrder[g].time);
@@ -162,7 +167,7 @@ class ChefsBoard extends Component {
                 this.HandleCock(i);
             }
         }
-        this.HeightFunc()
+        // this.HeightFunc()
     }
 
     componentWillUpdate(nextProps, nextState) {
@@ -178,10 +183,14 @@ class ChefsBoard extends Component {
 
     render() {
         let NewChefsBoard = [];
-        for (let i = 0; i < this.state.ChefsBoard.length; i++) { //buildes the display for each table
+        let CleanChefsBoard = this.state.ChefsBoard;
+        _.remove(CleanChefsBoard, function (n) {
+            return n.Display === 'none';
+        });
+        for (let i = 0; i < CleanChefsBoard.length; i++) { //buildes the display for each table
             let NewFoodOrder = [];
-            for (let x = 0; x < this.state.ChefsBoard[i].FoodOrder.length; x++) { // Loops throu each order
-                if (typeof this.state.ChefsBoard[i].FoodOrder[x] === 'object') {
+            for (let x = 0; x < CleanChefsBoard[i].FoodOrder.length; x++) { // Loops throu each order
+                if (typeof CleanChefsBoard[i].FoodOrder[x] === 'object') {
 
                     // STYLEING STUFF
                     let Opacity = '';
@@ -189,29 +198,29 @@ class ChefsBoard extends Component {
                     let BorderTop = '';
                     let BorderBottom = ''
 
-                    if (this.state.ChefsBoard[i].FoodOrder[x].sametime === 'Same-Time' &&
-                        (typeof this.state.ChefsBoard[i].FoodOrder[x - 1] === 'number'
+                    if (CleanChefsBoard[i].FoodOrder[x].sametime === 'Same-Time' &&
+                        (typeof CleanChefsBoard[i].FoodOrder[x - 1] === 'number'
                             || x === 0)) {
                         BorderTop = '2px solid #2d3047'
-                    } if (this.state.ChefsBoard[i].FoodOrder[x].sametime === 'Same-Time' &&  //object includes same time
-                        (typeof this.state.ChefsBoard[i].FoodOrder[x + 2] === 'number' || //next intem is num 
-                            x === this.state.ChefsBoard[i].FoodOrder.length - 2)) {//
+                    } if (CleanChefsBoard[i].FoodOrder[x].sametime === 'Same-Time' &&  //object includes same time
+                        (typeof CleanChefsBoard[i].FoodOrder[x + 2] === 'number' || //next intem is num 
+                            x === CleanChefsBoard[i].FoodOrder.length - 2)) {//
                         BorderBottom = '2px solid #2d3047'
                     }
-                    if (this.state.ChefsBoard[i].FoodOrder[x].state === 0) { //when the dish is just waiting
+                    if (CleanChefsBoard[i].FoodOrder[x].state === 0) { //when the dish is just waiting
                         DishColor = 'black'
-                        Opacity ='0.5'
+                        Opacity = '0.5'
                     }
-                    if (this.state.ChefsBoard[i].FoodOrder[x].state === 1) { //when the dish neeeds to cock
+                    if (CleanChefsBoard[i].FoodOrder[x].state === 1) { //when the dish neeeds to cock
                         DishColor = '#FF1469'
                     }
-                    if (this.state.ChefsBoard[i].FoodOrder[x].state === 2) {//when a dish is cocking
+                    if (CleanChefsBoard[i].FoodOrder[x].state === 2) {//when a dish is cocking
                         DishColor = 'black'
                     }
-                    if (this.state.ChefsBoard[i].FoodOrder[x].state === 3) {//when a dish is ready to pickup
+                    if (CleanChefsBoard[i].FoodOrder[x].state === 3) {//when a dish is ready to pickup
                         DishColor = '#5C6CF3'
                     }
-                    if (this.state.ChefsBoard[i].FoodOrder[x].state === 4) {//when a dish got sent
+                    if (CleanChefsBoard[i].FoodOrder[x].state === 4) {//when a dish got sent
                         DishColor = 'black'
                         Opacity = '0.2'
                     }
@@ -220,57 +229,80 @@ class ChefsBoard extends Component {
                         borderTop: BorderTop,
                         borderBottom: BorderBottom,
                         opacity: Opacity
-                    }} onClick={() => { this.SingleDishOnClick({ ChefsBoardIndex: i, FoodOrderIndex: x }) }} className='SingleDish' > {this.state.ChefsBoard[i].FoodOrder[x].name}</div>)
-                    if (this.state.ChefsBoard[i].FoodOrder[x].special !== '') {
+                    }} onClick={() => { this.SingleDishOnClick({ ChefsBoardIndex: i, FoodOrderIndex: x }) }} className='SingleDish' > {CleanChefsBoard[i].FoodOrder[x].name}</div>)
+                    if (CleanChefsBoard[i].FoodOrder[x].special !== '') {
                         let specialBorderBottom = '';
                         let Green = '#D1DBBD'
-                        if (this.state.ChefsBoard[i].FoodOrder[x].state === 3 || this.state.ChefsBoard[i].FoodOrder[x].state === 1) {
+                        if (CleanChefsBoard[i].FoodOrder[x].state === 3 || CleanChefsBoard[i].FoodOrder[x].state === 1) {
                             Green = '#0BAE45'
-                        } if (this.state.ChefsBoard[i].FoodOrder[x + 2] === 'Same-Time') {
-                                specialBorderBottom = '2px solid #2d3047'
+                        } if (CleanChefsBoard[i].FoodOrder[x + 2] === 'Same-Time') {
+                            specialBorderBottom = '2px solid #2d3047'
                         }
                         let SpecialStyle = { color: Green, borderBottom: specialBorderBottom };
                         NewFoodOrder.push(
-                            <div style={SpecialStyle} className='SpecialInstructions'>{this.state.ChefsBoard[i].FoodOrder[x].special}</div>
+                            <div style={SpecialStyle} className='SpecialInstructions'>{CleanChefsBoard[i].FoodOrder[x].special}</div>
                         )
                     }
-                } else if (typeof this.state.ChefsBoard[i].FoodOrder[x] === 'number') {
-                    NewFoodOrder.push(<div className='BoardNumber'>***{this.state.ChefsBoard[i].FoodOrder[x]}***</div>)
+                } else if (typeof CleanChefsBoard[i].FoodOrder[x] === 'number') {
+                    NewFoodOrder.push(<div className='BoardNumber'>***{CleanChefsBoard[i].FoodOrder[x]}***</div>)
                 } else { console.log(' shouldnt log') }
             }
-            let SingleOrderStyle = { height: (this.state.MaxHeight - 1), display: this.state.ChefsBoard[i].Display };
+            let SingleOrderStyle = { /*height: (this.state.MaxHeight - 1),*/ display: CleanChefsBoard[i].Display };
             let AllergyDivStyle;
-            if (this.state.ChefsBoard[i].Allergy !== '') {
-                AllergyDivStyle = { backgroundColor: 'black', opacity:'0.3' }
-            } else if (this.state.ChefsBoard[i].Allergy === '') {
-                AllergyDivStyle = { backgroundColor: 'black', opacity:'0.1' }
+            if (CleanChefsBoard[i].Allergy !== '') {
+                AllergyDivStyle = { backgroundColor: 'black', opacity: '0.3' }
+            } else if (CleanChefsBoard[i].Allergy === '') {
+                AllergyDivStyle = { backgroundColor: 'black', opacity: '0.1' }
             }
-
+            // let BoardTable
             NewChefsBoard.push(
-                <div className='col-md-1 flex-container OrderDiv' style={SingleOrderStyle}>
-                    <div className='TimeDiv'> 
-                        {this.state.ChefsBoard[i].Time}
+                <div className='col-md-1 OrderDiv flex-container flex-item' style={SingleOrderStyle}>
+                    <div className='TimeDiv'>
+                        {CleanChefsBoard[i].Time}
                     </div >
-                    <div className='SingleOrder' style={SingleOrderStyle}>
-                    <div className='TableNumberDiv'>
-                        {this.state.ChefsBoard[i].TableNumber}
-                    </div>
-                    <div className='AllergyDiv' style={AllergyDivStyle}>
-                        {this.state.ChefsBoard[i].Allergy}
-                    </div>
-                    <div className='SingleFoodOrder '>
-                        {NewFoodOrder}
-                    </div>
-                    <div className='RemoveDiv flex-item'>
-                        <button className='RemoveButton' onClick={() => { this.props.RemoveOrder(i) }}>X</button>
-                    </div>
+                    <div className='SingleOrder flex-container flex-item' style={SingleOrderStyle}>
+                        <div className='TableNumberDiv'>
+                            {CleanChefsBoard[i].TableNumber}
+                        </div>
+                        <div className='AllergyDiv' style={AllergyDivStyle}>
+                            {CleanChefsBoard[i].Allergy}
+                        </div>
+                        <div className='SingleFoodOrder flex-item'>
+                            {NewFoodOrder}
+                        </div>
+                        <div className='RemoveDiv flex-item'>
+                            <button className='RemoveButton' onClick={() => { this.props.RemoveOrder(i) }}>X</button>
+                        </div>
                     </div>
                 </div>
             )
         }
+        let ChefsBoradStyle = {borderBottom:'10px solid #222'}
+        let RenderedChefsBoard = _.chunk(NewChefsBoard, 12)
+        // if(RenderedChefsBoard.length > 1){
+        //     ChefsBoradStyle.borderBottom='10px solid #222'
+        // }
+        /*let FinallRender = RenderedChefsBoard.map(function (obj) {
+            return (<div className='row ChefsBoard flex-container' id='ChefsBoard' style={ChefsBoradStyle}>
+                {obj}
+            </div>);
+        });*/
+        let FinallRender=[];
+        for(let c=0; c<RenderedChefsBoard.length; c++){
+            if(RenderedChefsBoard.length>1 && c !== RenderedChefsBoard.length-1){
+                    FinallRender.push(<div className='row ChefsBoard flex-container' id='ChefsBoard' style={ChefsBoradStyle}>
+                                {RenderedChefsBoard[c]}
+                              </div>)
+                
+            }
+            else{FinallRender.push(<div className='row ChefsBoard flex-container' id='ChefsBoard'>
+                                {RenderedChefsBoard[c]}
+                              </div>)
+            }
+        }
         return (
-            <div className='row ChefsBoard' id='ChefsBoard'>
-                {NewChefsBoard}
+            <div className='BigChefsBoard'>
+                {FinallRender}
             </div>
         )
     }
