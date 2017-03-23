@@ -134,6 +134,7 @@
           border: 0px;
           box-shadow: 0 0 3px #888888; }
         * body .OrderPage .ButtonsDiv .SpecialButtonsDiv {
+          color: white;
           height: 9%; }
           * body .OrderPage .ButtonsDiv .SpecialButtonsDiv .Allergy {
             background-color: #C40D01; }

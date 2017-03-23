@@ -61,7 +61,7 @@ class NewOrder extends React.Component {
                     className="btn SendButton"
                     id="sendbutton"
                 >
-                    Send
+                    SEND
                 </button>
             </div>
         )

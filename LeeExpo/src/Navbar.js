@@ -122,6 +122,7 @@ class Navbar extends React.Component {
         }
     }
     RemoveOrder(OrderIndex) {
+        console.log(this.state)
         let NewState = this.state;
         NewState.ChefsBoard[OrderIndex].Display = 'none';
         this.passStates.push(_.cloneDeep(this.state))
@@ -129,6 +130,7 @@ class Navbar extends React.Component {
             ChefsBoard: NewState.ChefsBoard,
             // StatesArray:NewState.StatesArray
         })
+        console.log(this.state)
     }
     onOrderClick() {
         ChefsBoardStyle = {};

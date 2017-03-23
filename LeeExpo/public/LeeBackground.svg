@@ -1,18 +1,20 @@
 <svg width="580" height="400" xmlns="http://www.w3.org/2000/svg">
  <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
  <g>
   <title>background</title>
-  <rect fill="#e8e8e8" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
-  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
-   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  <rect x="-1" y="-1" width="582" height="402" id="canvas_background" fill="#e8e8e8"/>
+  <g id="canvasGrid" display="none">
+   <rect id="svg_1" width="100%" height="100%" x="0" y="0" stroke-width="0" fill="url(#gridpattern)"/>
   </g>
  </g>
  <g>
   <title>Layer 1</title>
-  <rect id="svg_7" height="415" width="625" y="0" x="-0.5" stroke-width="0" stroke="#f2f2f2" fill="#f2f2f2"/>
-  <ellipse stroke="#f2f2f2" ry="169.000002" rx="186.499997" id="svg_11" cy="201.499997" cx="288.000021" stroke-width="0" fill="#e8e8e8"/>
-  <ellipse stroke="#f2f2f2" ry="161.000008" rx="179.000006" id="svg_12" cy="202.000006" cx="288.500007" stroke-opacity="null" stroke-width="0" fill="#f2f2f2"/>
-  <text stroke="#f2f2f2" transform="matrix(2.9639666388926287,0,0,2.858880676477272,-435.0607573166658,-310.8251990478545) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_13" y="187" x="221.5" stroke-opacity="null" stroke-width="0" fill="#e2e2e2">LEE</text>
-  <line stroke="#f2f2f2" stroke-linecap="null" stroke-linejoin="null" id="svg_14" y2="236" x2="352.5" y1="233" x1="224.5" fill-opacity="null" stroke-opacity="null" fill="none"/>
+  <rect fill="#f2f2f2" stroke="#f2f2f2" stroke-width="0" x="-0.5" y="0" width="625" height="415" id="svg_7"/>
+  <ellipse fill="#e8e8e8" stroke-width="0" cx="288.000021" cy="201.499997" id="svg_11" rx="186.499997" ry="169.000002" stroke="#f2f2f2"/>
+  <ellipse fill="#f2f2f2" stroke-width="0" stroke-opacity="null" cx="288.500007" cy="202.000006" id="svg_12" rx="179.000006" ry="161.000008" stroke="#f2f2f2"/>
+  <text fill="#e2e2e2" stroke-width="0" stroke-opacity="null" x="221.5" y="187" id="svg_13" font-size="24" font-family="Helvetica, Arial, sans-serif" text-anchor="start" xml:space="preserve" transform="matrix(2.9639666388926287,0,0,2.858880676477272,-435.0607573166658,-310.8251990478545) " stroke="#f2f2f2">LEE</text>
+  <line fill="none" stroke-opacity="null" fill-opacity="null" x1="224.5" y1="233" x2="352.5" y2="236" id="svg_14" stroke-linejoin="null" stroke-linecap="null" stroke="#f2f2f2"/>
+  <line stroke="#e8e8e8" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_2" y2="235.5" x2="353.038456" y1="234.5" x1="226.280219" fill-opacity="0" stroke-width="7" fill="none"/>
  </g>
 </svg>
